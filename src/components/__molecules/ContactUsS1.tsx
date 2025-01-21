@@ -3,7 +3,7 @@ import React from "react";
 export default function ContactUsS1() {
   return (
     <>
-      <div>
+      <div className="max-w-[1120px] m-auto">
         <h2 className="font-medium text-[54px] leading-[58px] text-[#141718]">
           We believe in sustainable decor. We’re passionate about life at home.
         </h2>

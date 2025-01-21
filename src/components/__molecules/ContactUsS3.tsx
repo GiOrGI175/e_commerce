@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ContactUsS3() {
   return (
-    <div className="mt-[48px]">
+    <div className="mt-[48px] max-w-[1120px] m-auto">
       <h1 className="text-center font-medium text-[44px] leading-[40px]">
         Contact Us
       </h1>

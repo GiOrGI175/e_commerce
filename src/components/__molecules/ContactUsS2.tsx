@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ContactUsS2() {
   return (
-    <div className="mt-[48px] flex">
+    <div className="mt-[48px] max-w-[1120px] flex m-auto" >
       <Image
         src={ContactUsBanner}
         width={560}
