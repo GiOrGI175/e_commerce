@@ -2,18 +2,16 @@
 
 import { navLinks } from '@/commons/services/navLinks';
 import { it } from 'node:test';
+import Navbar from '../__atoms/NavBar';
 
 const Header = () => {
   return (
-    <header className='max-w-[1120px] w-full h-[20px] border-[1px] border-black'>
+    <header className='max-w-[1120px] w-full h-[20px] border-[1px] border-black flex'>
       <div>logo</div>
-      <nav>
-        <ul>
-          {navLinks.map((item) => (
-            <li key={item.id}>{item}</li>
-          ))}
-        </ul>
-      </nav>
+
+      <>
+        <Navbar />
+      </>
     </header>
   );
 };
