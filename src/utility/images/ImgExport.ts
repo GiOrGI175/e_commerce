@@ -11,5 +11,7 @@ import Logo from "./Logo.png"
 import InstagramIcon from "./instagram.png"
 import FacebookIcon from "./Vector 2998.png"
 import YoutubeIcon from "./Rectangle 1083.png"
+import BlackLogo from "./blackLogo.png"
 
-export { ContactUsBanner, ArrowRight, Adress, Contact, Email, Map,Shipping,Money,Lock, Logo,InstagramIcon,YoutubeIcon,FacebookIcon };
+
+export { ContactUsBanner, ArrowRight, Adress, Contact, Email, Map,Shipping,Money,Lock, Logo,InstagramIcon,YoutubeIcon,FacebookIcon,BlackLogo };
