@@ -14,8 +14,14 @@ import YoutubeIcon from './Rectangle 1083.png';
 import swpperSlide1 from './swiperSlide1.webp';
 import swpperSlide2 from './swiperSlide2.webp';
 import swpperSlide3 from './swiperSlide3.webp';
+import livingRoom from './livingRoom.png';
+import badRoom from './badRoom.png';
+import kitchen from './kitchenRoom.png';
 
 export {
+  kitchen,
+  badRoom,
+  livingRoom,
   swpperSlide1,
   swpperSlide2,
   swpperSlide3,
