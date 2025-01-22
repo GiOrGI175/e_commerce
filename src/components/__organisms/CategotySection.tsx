@@ -2,31 +2,69 @@
 
 import Image from 'next/image';
 
-import { livingRoom, badRoom, kitchen } from '@/utility/images/ImgExport';
+import {
+  livingRoom,
+  badRoom,
+  kitchen,
+  ArrowRight,
+} from '@/utility/images/ImgExport';
 
 const CategotySection = () => {
   return (
     <section className=' max-w-[1120px] w-full mt-[240px] flex gap-[24px]'>
       <div className='relative'>
-        <div className='absolute top-0 left-0'>
-          <p>Living Room</p>
-          <button>Shop Now</button>
+        <div className='absolute top-[48px] left-[48px]'>
+          <p className='font-poppins font-medium text-[34px] leading-[38px] tracking-tighter-[-0.6px]  text-[#141718]'>
+            Living Room
+          </p>
+          <button className='font-medium text-[16px] leading-[28px] tracking-tighter-[-0.4px]  text-[#141718] border-b-[1px] border-[#141718] flex items-center'>
+            Shop Now
+            <Image
+              src={ArrowRight}
+              width={20}
+              height={20}
+              alt='arrow'
+              className='ml-[4px]'
+            />
+          </button>
         </div>
         <Image src={livingRoom} width={548} height={664} alt='livingRoomImg' />
       </div>
       <div className='flex flex-col gap-[24px]'>
         <div className='relative'>
           <Image src={badRoom} width={548} height={664} alt='badRoomImg' />
-          <div className='absolute top-0 left-0'>
-            <p>Living Room</p>
-            <button>Shop Now</button>
+          <div className='absolute bottom-[40px] left-[32px]'>
+            <p className='font-poppins font-medium text-[34px] leading-[38px] tracking-tighter-[-0.6px]  text-[#141718]'>
+              Living Room
+            </p>
+            <button className='font-medium text-[16px] leading-[28px] tracking-tighter-[-0.4px]  text-[#141718] border-b-[1px] border-[#141718] flex items-center'>
+              Shop Now
+              <Image
+                src={ArrowRight}
+                width={20}
+                height={20}
+                alt='arrow'
+                className='ml-[4px]'
+              />
+            </button>
           </div>
         </div>
         <div className='relative'>
           <Image src={kitchen} width={548} height={664} alt='Kitchen' />
-          <div className='absolute top-0 left-0'>
-            <p>Kitchen</p>
-            <button>Shop Now</button>
+          <div className='absolute bottom-[40px] left-[32px] '>
+            <p className='font-poppins font-medium text-[34px] leading-[38px] tracking-tighter-[-0.6px]  text-[#141718]'>
+              Kitchen
+            </p>
+            <button className='font-medium text-[16px] leading-[28px] tracking-tighter-[-0.4px]  text-[#141718] border-b-[1px] border-[#141718] flex items-center '>
+              Shop Now
+              <Image
+                src={ArrowRight}
+                width={20}
+                height={20}
+                alt='arrow'
+                className='ml-[4px]'
+              />
+            </button>
           </div>
         </div>
       </div>
