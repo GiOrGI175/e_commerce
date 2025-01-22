@@ -17,8 +17,28 @@ import swpperSlide3 from './swiperSlide3.webp';
 import livingRoom from './livingRoom.png';
 import badRoom from './badRoom.png';
 import kitchen from './kitchenRoom.png';
+import productSlide1 from './productSlide1.png';
+import productSlide2 from './productSlide2.png';
+import productSlide3 from './productSlide3.png';
+import productSlide4 from './productSlide4.png';
+import productSlide5 from './productSlide5.png';
+import productSlide6 from './productSlide6.png';
+import productSlide7 from './productSlide7.png';
+import productSlide8 from './productSlide8.png';
+import star from './Star.svg';
+import heart from './heart.svg';
 
 export {
+  star,
+  heart,
+  productSlide1,
+  productSlide2,
+  productSlide3,
+  productSlide4,
+  productSlide5,
+  productSlide6,
+  productSlide7,
+  productSlide8,
   kitchen,
   badRoom,
   livingRoom,

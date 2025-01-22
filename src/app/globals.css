@@ -96,3 +96,24 @@
 }
 
 /* swipper end */
+
+/* swipper2 start */
+
+.swiper2 {
+  width: 100% !important;
+  max-height: 675px !important;
+  z-index: 1;
+}
+
+.swiper-slide2 {
+  width: 262px !important;
+  text-align: center;
+  overflow: hidden;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+/* swipper2 end */
