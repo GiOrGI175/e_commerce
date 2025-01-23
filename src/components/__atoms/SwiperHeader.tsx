@@ -5,9 +5,11 @@ import Image from 'next/image';
 
 const SwiperHeader = () => {
   return (
-    <div className='max-w-[1120px] w-full flex justify-between items-center border-[1px] border-red-700'>
-      <h3 className='text-xl font-semibold'>New Arrivals</h3>
-      <button className='font-medium text-[16px] leading-[28px] tracking-tighter-[-0.4px]  text-[#141718] flex items-center'>
+    <div className='max-w-[1120px] w-full my-[48px] flex justify-between items-end'>
+      <h3 className='max-w-[149px] font-poppins font-medium text-[40px] leading-[44px] tracking-tighter-[-0.4px]  text-[#141718]'>
+        New Arrivals
+      </h3>
+      <button className='font-poppins text-[16px] leading-[28px] tracking-tighter-[-0.4px]  text-[#141718] flex items-center'>
         More Products
         <Image
           src={ArrowRight}

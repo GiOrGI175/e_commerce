@@ -19,6 +19,8 @@ const SwiperProduct = () => {
   const paginationRef = useRef<HTMLDivElement>(null);
   const [swiperReady, setSwiperReady] = useState(false);
 
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+
   useEffect(() => {
     if (paginationRef.current) {
       setSwiperReady(true);
@@ -26,7 +28,7 @@ const SwiperProduct = () => {
   }, []);
 
   return (
-    <div className='max-w-[1280px] w-full  mx-auto h-full border-[1px] border-[green]'>
+    <div className='max-w-[1280px] w-full  mx-auto h-full '>
       <div className='relative '>
         {swiperReady && (
           <Swiper
@@ -46,29 +48,32 @@ const SwiperProduct = () => {
             }}
             modules={[Navigation, Scrollbar]}
             breakpoints={{
-              // Default: for larger screens
               1024: {
                 slidesPerView: 3,
                 spaceBetween: 40,
               },
-              // Tablets and below (screen width <= 1024px)
               768: {
                 slidesPerView: 2,
                 spaceBetween: 30,
               },
-              // Mobile screens (screen width <= 480px)
               480: {
                 slidesPerView: 1,
                 spaceBetween: 15,
               },
             }}
           >
-            {SwipperSlidesArr2.map((item) => (
+            {SwipperSlidesArr2.map((item, index) => (
               <SwiperSlide
                 key={`${item.name}${item.price}`}
                 className='swiper-slide2'
+                onMouseMove={() => setHoverIndex(index)}
+                onMouseLeave={() => setHoverIndex(null)}
               >
-                <ProductCardSwipper item={item} />
+                <ProductCardSwipper
+                  item={item}
+                  index={index}
+                  hoverIndex={hoverIndex}
+                />
               </SwiperSlide>
             ))}
           </Swiper>

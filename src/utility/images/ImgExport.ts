@@ -27,9 +27,17 @@ import productSlide7 from './productSlide7.png';
 import productSlide8 from './productSlide8.png';
 import star from './Star.svg';
 import heart from './heart.svg';
+import delivery from './delivery.svg';
+import money from './money.png';
+import lockB from './lock 01.png';
+import call from './callM.svg';
 
 export {
+  call,
   star,
+  lockB,
+  money,
+  delivery,
   heart,
   productSlide1,
   productSlide2,

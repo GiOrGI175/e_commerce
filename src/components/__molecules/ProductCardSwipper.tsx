@@ -6,9 +6,15 @@ import { it } from 'node:test';
 
 type ProductCardSwipperProps = {
   item: SwipperSlidesArr2T;
+  hoverIndex: null | number;
+  index: number;
 };
 
-const ProductCardSwipper: React.FC<ProductCardSwipperProps> = ({ item }) => {
+const ProductCardSwipper: React.FC<ProductCardSwipperProps> = ({
+  item,
+  hoverIndex,
+  index,
+}) => {
   return (
     <div>
       <div className='relative'>
@@ -29,15 +35,19 @@ const ProductCardSwipper: React.FC<ProductCardSwipperProps> = ({ item }) => {
             </div>
           )}
         </div>
-        <button className='absolute top-[16px] right-[16px] w-[32px] h-[32px] rounded-full bg-white flex justify-center items-center'>
-          <IsHeart />
-        </button>
-        <div className='absolute bottom-[16px] left-[16px]'>
-          <button className='w-[230px] h-[46px] rounded-[8px] flex justify-center items-center bg-[#141718]'>
-            <span className='Font-Inter font-normal text-[16px] leading-[28px] text-white'>
-              Add to Cart
-            </span>
+        {hoverIndex === index && (
+          <button className='absolute top-[16px] right-[16px] w-[32px] h-[32px] rounded-full bg-white flex justify-center items-center'>
+            <IsHeart />
           </button>
+        )}
+        <div className='absolute bottom-[16px] left-[16px]'>
+          {hoverIndex === index && (
+            <button className='w-[230px] h-[46px] rounded-[8px] flex justify-center items-center bg-[#141718]'>
+              <span className='Font-Inter font-normal text-[16px] leading-[28px] text-white'>
+                Add to Cart
+              </span>
+            </button>
+          )}
         </div>
       </div>
       <div className='flex flex-col mt-[12px]'>
