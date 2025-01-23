@@ -9,18 +9,18 @@ const Navbar = () => {
 
   return (
     <nav>
-      <ul className='flex w-full justify-between'>
+      <ul className='flex gap-10'>
         {navLinks.map((item) => {
           const isActive = PathName.startsWith(item.link);
 
           return (
-            <li key={item.link} className='ml-[40px]'>
+            <li key={item.link}>
               <span
-                className={`font-publicSans font-normal leading-[24px] group-hover:text-[#F2F2F2] duration-1000  ${
+                className={`font-publicSans font-bold leading-[24px] group-hover:text-[#F2F2F2] duration-1000  ${
                   isActive
-                    ? 'text-[#141718] group-hover:text-[#201F24]'
-                    : 'text-[#6C7275]'
-                }  text-[14px]`}
+                    ? 'text-[#201F24] group-hover:text-[#201F24]'
+                    : 'text-[#B3B3B3]'
+                }  text-[19px]`}
               >
                 <Link href={item.link}>{item.title}</Link>
               </span>
