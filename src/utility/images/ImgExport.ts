@@ -1,3 +1,5 @@
+
+import BlackLogo from "./blackLogo.png";
 import ContactUsBanner from './contact-us.png';
 import ArrowRight from './arrow-right.png';
 import Adress from './adress.png';
@@ -74,4 +76,8 @@ export {
   InstagramIcon,
   YoutubeIcon,
   FacebookIcon,
+  BlackLogo,
 };
+
+
+
