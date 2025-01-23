@@ -31,8 +31,16 @@ import delivery from './delivery.svg';
 import money from './money.png';
 import lockB from './lock 01.png';
 import call from './callM.svg';
+import lowerPriceBaner from './LowerPriceBaner.webp';
+import room1 from './room1.webp';
+import room2 from './room2.webp';
+import room3 from './room3.webp';
 
 export {
+  room1,
+  room2,
+  room3,
+  lowerPriceBaner,
   call,
   star,
   lockB,
