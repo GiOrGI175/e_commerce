@@ -116,4 +116,24 @@
   z-index: 2;
 }
 
+.swiper-scrollbar {
+  height: 4px !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  border-radius: 80px !important;
+  position: absolute !important;
+  bottom: -60px !important;
+  left: 0px !important;
+  width: 100% !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.swiper-scrollbar .swiper-scrollbar-drag {
+  background-color: #343839 !important;
+  border-radius: 80px !important;
+}
+
+.swiper-scrollbar .swiper-scrollbar-drag:hover {
+  background-color: #343839 !important;
+}
+
 /* swipper2 end */

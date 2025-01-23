@@ -12,7 +12,6 @@ import {
   productSlide8,
   star,
 } from '@/utility/images/ImgExport';
-import { start } from 'repl';
 
 export const SwipperSlidesArr = [
   {
@@ -33,6 +32,7 @@ export type SwipperSlidesArr2T = {
   oldPrice?: number;
   stars: string[];
   isNew?: string;
+  isHeart: boolean;
   discountPrecent?: number;
 };
 
@@ -43,6 +43,7 @@ export const SwipperSlidesArr2: SwipperSlidesArr2T[] = [
     price: 199.0,
     oldPrice: 400.0,
     stars: [star, star, star, star, star],
+    isHeart: true,
     isNew: 'NEW',
     discountPrecent: 50,
   },
@@ -51,18 +52,27 @@ export const SwipperSlidesArr2: SwipperSlidesArr2T[] = [
     name: 'Table Lamp',
     price: 24.99,
     stars: [star, star, star, star, star],
+    isHeart: false,
+    isNew: 'NEW',
+    discountPrecent: 50,
   },
   {
     img: productSlide3,
     name: 'Beige Table Lamp',
     price: 24.99,
     stars: [star, star, star, star, star],
+    isHeart: false,
+    isNew: 'NEW',
+    discountPrecent: 50,
   },
   {
     img: productSlide4,
     name: 'Bamboo basket',
     price: 24.99,
     stars: [star, star, star, star, star],
+    isHeart: false,
+    isNew: 'NEW',
+    discountPrecent: 50,
   },
   {
     img: productSlide5,
@@ -70,6 +80,7 @@ export const SwipperSlidesArr2: SwipperSlidesArr2T[] = [
     price: 299.0,
     oldPrice: 500.0,
     stars: [star, star, star, star, star],
+    isHeart: false,
     isNew: 'NEW',
     discountPrecent: 50,
   },
@@ -78,18 +89,26 @@ export const SwipperSlidesArr2: SwipperSlidesArr2T[] = [
     name: 'Cozy Sofa',
     price: 299.99,
     stars: [star, star, star, star, star],
+    isHeart: false,
     isNew: 'NEW',
+    discountPrecent: 50,
   },
   {
     img: productSlide7,
     name: 'White Drawer unit',
     price: 89.99,
     stars: [star, star, star, star, star],
+    isHeart: false,
+    isNew: 'NEW',
+    discountPrecent: 50,
   },
   {
     img: productSlide8,
     name: 'Black Brow Side table',
     price: 16.99,
     stars: [star, star, star, star, star],
+    isHeart: false,
+    isNew: 'NEW',
+    discountPrecent: 50,
   },
 ];

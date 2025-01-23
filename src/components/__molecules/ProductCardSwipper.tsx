@@ -29,9 +29,9 @@ const ProductCardSwipper: React.FC<ProductCardSwipperProps> = ({ item }) => {
             </div>
           )}
         </div>
-        <div className='absolute top-[16px] right-[16px]'>
+        <button className='absolute top-[16px] right-[16px] w-[32px] h-[32px] rounded-full bg-white flex justify-center items-center'>
           <IsHeart />
-        </div>
+        </button>
         <div className='absolute bottom-[16px] left-[16px]'>
           <button className='w-[230px] h-[46px] rounded-[8px] flex justify-center items-center bg-[#141718]'>
             <span className='Font-Inter font-normal text-[16px] leading-[28px] text-white'>
@@ -48,9 +48,9 @@ const ProductCardSwipper: React.FC<ProductCardSwipperProps> = ({ item }) => {
             </div>
           ))}
         </div>
-        <div className='flex flex-col items-start'>
-          <span>{item.name}</span>
-          <p>
+        <div className='flex flex-col items-start '>
+          <span className='mt-[4px]'>{item.name}</span>
+          <p className='mt-[4px]'>
             <span>${item.price}</span>
             <span className='line-through'> ${item.oldPrice}</span>
           </p>

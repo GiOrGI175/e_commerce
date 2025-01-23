@@ -2,15 +2,18 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/scrollbar'; // Import Swiper's Scrollbar styles
 
 import { SwipperSlidesArr2 } from '@/commons/services/swipperSlides';
 import ProductCardSwipper from '../__molecules/ProductCardSwipper';
+import { ArrowRight } from '@/utility/images/ImgExport';
+import Image from 'next/image';
 
 const SwiperProduct = () => {
   const paginationRef = useRef<HTMLDivElement>(null);
@@ -23,27 +26,42 @@ const SwiperProduct = () => {
   }, []);
 
   return (
-    <div className='w-full h-full '>
-      <div className='mt-[80px] mb-[100px] flex justify-center'>
-        <h3 className='w-[728px]  font-lora font-medium text-[64px] leading-[81px] text-center text-[#FAF5E6]'>
-          Let's Hear About Their Experiences
-        </h3>
-      </div>
-      <div className='relative  '>
+    <div className='max-w-[1280px] w-full  mx-auto h-full border-[1px] border-[green]'>
+      <div className='relative '>
         {swiperReady && (
           <Swiper
-            className='mySwiper2  w-full h-full'
+            className='mySwiper2 w-full h-full'
             slidesPerView={'auto'}
             spaceBetween={24}
-            pagination={{
-              el: paginationRef.current,
-              clickable: true,
-            }}
             loop={true}
             cssMode={true}
             mousewheel={true}
             keyboard={true}
-            modules={[Navigation, Pagination]}
+            pagination={false}
+            scrollbar={{
+              el: paginationRef.current,
+              hide: false,
+              draggable: true,
+              dragSize: 'auto',
+            }}
+            modules={[Navigation, Scrollbar]}
+            breakpoints={{
+              // Default: for larger screens
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+              },
+              // Tablets and below (screen width <= 1024px)
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+              },
+              // Mobile screens (screen width <= 480px)
+              480: {
+                slidesPerView: 1,
+                spaceBetween: 15,
+              },
+            }}
           >
             {SwipperSlidesArr2.map((item) => (
               <SwiperSlide
@@ -55,10 +73,8 @@ const SwiperProduct = () => {
             ))}
           </Swiper>
         )}
-        <div ref={paginationRef} className='custom-pagination' />
 
-        <div className='bg_Gradient_Right absolute w-[150px] h-[675px] left-[-30px] top-[0px] z-[3] rounded-[20px] ' />
-        <div className='bg_Gradient_Left absolute w-[150px] h-[675px] right-[-30px] top-[0px] z-[3] rounded-[20px]' />
+        <div ref={paginationRef} className='swiper-scrollbar' />
       </div>
     </div>
   );
