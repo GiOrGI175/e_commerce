@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <nav>
-      <ul className='flex'>
+      <ul className='flex gap-10'>
         {navLinks.map((item) => {
           const isActive = PathName.startsWith(item.link);
 
