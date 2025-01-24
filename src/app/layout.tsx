@@ -18,10 +18,12 @@ export default function RootLayout({
     <html lang="en">
       <body className="w-full flex flex-col items-center  ">
         {!disableNavAndFooter.includes(path) && <Header />}
-        {!disableNavAndFooter.includes(path) && <Footer />}
+        
 
         <></>
         {children}
+        {!disableNavAndFooter.includes(path) && <Footer />}
+        
       </body>
     </html>
   );
