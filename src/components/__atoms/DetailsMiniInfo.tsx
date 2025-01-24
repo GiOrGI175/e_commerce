@@ -9,7 +9,7 @@ const DetailsMiniInfo = () => {
       {Info.map((item) => (
         <div
           key={item.id}
-          className='max-w-[262px] w-full h-[220px] pl-[32px] flex flex-col justify-center bg-[#F3F5F7]'
+          className='flex grow basis-[152px] w-full h-[220px] pl-[32px]  flex-col justify-center bg-[#F3F5F7]'
         >
           <div className='mb-[16px]'>
             <Image src={item.img} width={48} height={48} alt='Icon' />

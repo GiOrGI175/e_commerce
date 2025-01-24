@@ -10,16 +10,28 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className='w-full flex justify-center '>
-      <div className='max-w-[1440px] w-full flex flex-col items-center  '>
+    <div className='w-full flex-col flex justify-center '>
+      <div className='max-w-[1440px] w-full flex flex-col items-center px-[32px] '>
         <SwipperBaner />
+      </div>
+      <div className='max-w-[1440px] w-full flex flex-col items-center px-[32px] '>
         <CategotySection />
+      </div>
+      <div className='max-w-[1440px] w-full flex flex-col items-center px-[32px] '>
         <SwiperHeader />
+      </div>
+      <div className='max-w-[1440px] w-full flex flex-col items-center  '>
         <div className='flex self-end   '>
           <SwiperProduct />
         </div>
+      </div>
+      <div className='max-w-[1440px] w-full flex flex-col items-center px-[32px] '>
         <DetailsMiniInfo />
+      </div>
+      <div className='max-w-[1440px] w-full flex flex-col items-center  '>
         <LowerPriceSection />
+      </div>
+      <div className='max-w-[1440px] w-full flex flex-col items-center px-[32px] '>
         <ArticlesSection />
       </div>
     </div>
