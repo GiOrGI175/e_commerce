@@ -10,7 +10,7 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className='w-full flex-col flex justify-center '>
+    <div className='w-full flex-col flex  items-center '>
       <div className='max-w-[1440px] w-full flex flex-col items-center px-[32px] '>
         <SwipperBaner />
       </div>
