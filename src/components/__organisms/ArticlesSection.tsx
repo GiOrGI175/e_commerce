@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const ArticlesSection = () => {
   return (
-    <section className='max-w-[1120px] w-full mt-[240px] flex flex-col '>
+    <section className='max-w-[1120px] w-full mt-[0px] md:mt-[240px] flex flex-col '>
       <div className='max-w-[1120px] w-full my-[48px] flex justify-between items-end'>
         <h3 className='max-w-[149px] font-poppins font-medium text-[40px] leading-[44px] tracking-tighter-[-0.4px]  text-[#141718]'>
           Articles
