@@ -8,8 +8,8 @@ const Navbar = () => {
   const PathName = usePathname();
 
   return (
-    <nav className="sm:block hidden">
-      <ul className="md:flex gap-10">
+    <nav className="sm:flex hidden">
+      <ul className="flex gap-10">
         {navLinks.map((item) => {
           const isActive = PathName.startsWith(item.link);
 
