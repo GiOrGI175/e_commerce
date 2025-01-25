@@ -44,6 +44,7 @@ import FacebookIconBlack from "./facebookBlack.svg";
 import InstagramIconBlack from "./instagramIConblck.svg";
 import youtubeIconBlack from "./youtubeBlack.svg";
 import LogoWhite from "./LogoWhite.svg";
+
 export {
   room1,
   room2,
@@ -91,4 +92,5 @@ export {
   InstagramIconBlack,
   youtubeIconBlack,
   LogoWhite,
+  
 };
