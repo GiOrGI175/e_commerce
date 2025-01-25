@@ -6,6 +6,10 @@ import Email from "./mail.png";
 import Map from "./Map.png";
 import mail from "./email.svg";
 import ProductImage from "./ProductImage.jpg";
+import Sort1 from "./Sort1.svg";
+import Sort2 from "./Sort2.svg";
+import Sort3 from "./Sort3.svg";
+import Sort4 from "./Sort4.png";
 
 export {
   ContactUsBanner,
@@ -16,4 +20,8 @@ export {
   Email,
   Map,
   mail,
+  Sort1,
+  Sort2,
+  Sort3,
+  Sort4,
 };
