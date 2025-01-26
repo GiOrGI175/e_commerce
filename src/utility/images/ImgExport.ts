@@ -44,8 +44,15 @@ import FacebookIconBlack from "./facebookBlack.svg";
 import InstagramIconBlack from "./instagramIConblck.svg";
 import youtubeIconBlack from "./youtubeBlack.svg";
 import LogoWhite from "./LogoWhite.svg";
+import mail from "./email.svg";
+import ProductImage from "./ProductImage.jpg";
+import Sort1 from "./Sort1.svg";
+import Sort2 from "./Sort2.svg";
+import Sort3 from "./Sort3.svg";
+import Sort4 from "./Sort4.png";
 
 export {
+  ProductImage,
   room1,
   room2,
   room3,
@@ -76,6 +83,11 @@ export {
   Contact,
   Email,
   Map,
+  mail,
+  Sort1,
+  Sort2,
+  Sort3,
+  Sort4,
   Shipping,
   Money,
   Lock,
@@ -92,5 +104,4 @@ export {
   InstagramIconBlack,
   youtubeIconBlack,
   LogoWhite,
-  
 };

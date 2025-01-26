@@ -1,10 +1,7 @@
-import Header from '@/components/__molecules/Header';
-import Image from 'next/image';
+import Header from "@/components/__molecules/Header";
+import Image from "next/image";
+import Shop from "@/components/__organisms/Shop";
 
-export default function Shop() {
-  return (
-    <section className='max-w-[1440px] w-full flex justify-center '>
-      shop{' '}
-    </section>
-  );
+export default function shop() {
+  return <Shop />;
 }
