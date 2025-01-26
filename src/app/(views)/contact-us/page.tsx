@@ -5,7 +5,7 @@ export default function contactUs() {
   return (
     <>
       <section className="w-full flex justify-center ">
-        <div className="max-w-[1440px] w-full  ">
+        <div className=" w-full  ">
           <ContactUs />
         </div>
       </section>
