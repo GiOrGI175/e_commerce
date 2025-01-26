@@ -35,7 +35,7 @@ const SwipperProduct2 = () => {
   };
 
   return (
-    <div className='relative max-w-[547px] w-full h-[728px] '>
+    <div className='relative max-w-[547px] w-full h-[414px] sm:h-[728px] '>
       {swiperReady && (
         <Swiper
           className='mySwiper3  w-full h-full'
