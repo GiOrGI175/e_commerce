@@ -1,5 +1,12 @@
-
-import BlackLogo from "./blackLogo.png";
+import trayTableClr1 from './trayTableClr_Black.png';
+import trayTableClr2 from './trayTavleClr_Brown.png';
+import trayTableClr3 from './trayTavleClr_Red.png';
+import trayTableClr4 from './trayTavleClr_White.png';
+import trayTableIMG1 from './trayTavleIMG1.png';
+import trayTableIMG2 from './trayTavleIMG2.png';
+import trayTableIMG3 from './trayTavleIMG3.png';
+import trayTableIMG4 from './trayTavleIMG4.png';
+import BlackLogo from './blackLogo.png';
 import ContactUsBanner from './contact-us.png';
 import ArrowRight from './arrow-right.png';
 import Adress from './adress.png';
@@ -10,9 +17,9 @@ import Shipping from './freeshipping.png';
 import Money from './money.png';
 import Lock from './lock 01.png';
 import Logo from './Logo.png';
-import InstagramIcon from './instagram.png';
-import FacebookIcon from './Vector 2998.png';
-import YoutubeIcon from './Rectangle 1083.png';
+import InstagramIcon from './instagramWhite.svg';
+import FacebookIcon from './facebookWhite.svg';
+import YoutubeIcon from './youtubeWhite.svg';
 import swpperSlide1 from './swiperSlide1.webp';
 import swpperSlide2 from './swiperSlide2.webp';
 import swpperSlide3 from './swiperSlide3.webp';
@@ -37,8 +44,32 @@ import lowerPriceBaner from './LowerPriceBaner.webp';
 import room1 from './room1.webp';
 import room2 from './room2.webp';
 import room3 from './room3.webp';
+import userIcon from './user-circle.svg';
+import cartIcon from './shopping bag.svg';
+import searchIcon from './search 02.svg';
+import burgerMenu from './burger.svg';
+import FacebookIconBlack from './facebookBlack.svg';
+import InstagramIconBlack from './instagramIConblck.svg';
+import youtubeIconBlack from './youtubeBlack.svg';
+import LogoWhite from './LogoWhite.svg';
+import TableImage from './table.png';
+import mail from './email.svg';
+import ProductImage from './ProductImage.jpg';
+import Sort1 from './Sort1.svg';
+import Sort2 from './Sort2.svg';
+import Sort3 from './Sort3.svg';
+import Sort4 from './Sort4.png';
 
 export {
+  ProductImage,
+  trayTableIMG1,
+  trayTableIMG2,
+  trayTableIMG3,
+  trayTableIMG4,
+  trayTableClr1,
+  trayTableClr2,
+  trayTableClr3,
+  trayTableClr4,
   room1,
   room2,
   room3,
@@ -69,6 +100,11 @@ export {
   Contact,
   Email,
   Map,
+  mail,
+  Sort1,
+  Sort2,
+  Sort3,
+  Sort4,
   Shipping,
   Money,
   Lock,
@@ -77,7 +113,13 @@ export {
   YoutubeIcon,
   FacebookIcon,
   BlackLogo,
+  userIcon,
+  searchIcon,
+  cartIcon,
+  burgerMenu,
+  FacebookIconBlack,
+  InstagramIconBlack,
+  youtubeIconBlack,
+  LogoWhite,
+  TableImage,
 };
-
-
-

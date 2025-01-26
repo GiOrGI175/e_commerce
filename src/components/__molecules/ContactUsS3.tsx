@@ -4,11 +4,11 @@ import Image from "next/image";
 
 export default function ContactUsS3() {
   return (
-    <div className="mt-[48px] max-w-[1120px] m-auto">
+    <div className="mt-[48px] max-w-[560px] sm:max-w-[1120px] m-auto ">
       <h1 className="text-center font-medium text-[44px] leading-[40px]">
         Contact Us
       </h1>
-      <div className=" grid grid-cols-3 gap-4 mt-[40px]">
+      <div className=" grid sm:grid-cols-3 grid-cols-1 gap-4 mt-[40px] ">
         <div className="bg-[#F3F5F7] text-center flex justify-center items-center ">
           <div className="flex flex-col items-center justify-center gap-3 py-4">
             <Image src={Adress} height={32} width={32} alt="Adress" />
@@ -43,9 +43,9 @@ export default function ContactUsS3() {
           </div>
         </div>
       </div>
-      <div className="flex justify-between mt-[40px] gap-[28px]">
+      <div className="flex flex-col sm:flex-row justify-between mt-[40px] gap-[28px]">
         <div className="w-full">
-          <form action="">
+          <form action="" className="">
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">
                 FULL NAME
@@ -93,7 +93,7 @@ export default function ContactUsS3() {
             </button>
           </form>
         </div>
-        <Image src={Map} width={548} height={404} alt="Map" />
+        <Image src={Map} width={548} height={404} alt="Map" className="m-auto sm:m-0" />
       </div>
     </div>
   );

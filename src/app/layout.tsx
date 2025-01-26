@@ -15,11 +15,15 @@ export default function RootLayout({
 }>) {
   const path = usePathname();
   return (
-    <html lang='en'>
-      <body className='w-full flex flex-col items-center  '>
-        {/* {!disableNavAndFooter.includes(path) && <Header />} */}
+    <html lang="en">
+      <body className="w-full flex flex-col items-center  ">
+        {!disableNavAndFooter.includes(path) && <Header />}
+        
+
+        <></>
         {children}
-        {/* {!disableNavAndFooter.includes(path) && <Footer />} */}
+        {!disableNavAndFooter.includes(path) && <Footer />}
+        
       </body>
     </html>
   );
