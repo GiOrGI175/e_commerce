@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ShopFilterSidebar() {
   return (
-    <div className="bg-white rounded-lg row-start-1 row-span-2 col-start-1">
+    <div className="hidden sm:block bg-white rounded-lg sm:row-start-1 sm:row-span-2 sm:col-start-1">
       <div className="font-bold text-lg mb-4">Filter</div>
       <div className="mb-6">
         <h3 className="font-semibold mb-2">Category</h3>
