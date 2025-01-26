@@ -48,17 +48,17 @@ export default function ProductCard({
       onMouseLeave={handleMouseLeave}
       className={`${
         layout === "Sort3"
-          ? "min-w-[548px] h-fit flex gap-x-[24px] items-center"
+          ? "max-w-[548px] h-fit flex flex-col sm:flex-row gap-x-[24px] items-center"
           : "h-fit border-gray-200 rounded-lg overflow-hidden sm:max-w-[262px] max-w-[152px]"
       }`}
     >
       {/* Product Image */}
-      <div className="relative sm:w-[240px] w-[130px]">
+      <div className="relative w-[240px] ">
         <Image
           className="w-full object-cover"
           src={ProductImage}
           alt="Product Image"
-          width={266}
+          width={262}
           height={349}
         />
         <div
@@ -123,7 +123,7 @@ export default function ProductCard({
                     isNew,
                   })
                 }
-                className="bg-black w-full text-white rounded-md py-[9px]"
+                className="bg-black w-full  text-white rounded-md py-[9px]"
               >
                 Add To Cart
               </button>
