@@ -33,6 +33,9 @@ const Header = () => {
   const handleClick = () => {
     router.push("/sign-in");
   };
+  const handleClickCart = () => {
+    router.push("/cart")
+  };
 
   return (
     <header className="max-w-[1120px] w-full h-[60px] flex items-center justify-between">
@@ -205,6 +208,7 @@ const Header = () => {
           height={24}
           alt="Cart"
           className="cursor-pointer mr-[32px] sm:mr-3"
+          onClick={handleClickCart}
         />
       </div>
     </header>
