@@ -1,3 +1,11 @@
+import trayTableClr1 from './trayTableClr_Black.png';
+import trayTableClr2 from './trayTavleClr_Brown.png';
+import trayTableClr3 from './trayTavleClr_Red.png';
+import trayTableClr4 from './trayTavleClr_White.png';
+import trayTableIMG1 from './trayTavleIMG1.png';
+import trayTableIMG2 from './trayTavleIMG2.png';
+import trayTableIMG3 from './trayTavleIMG3.png';
+import trayTableIMG4 from './trayTavleIMG4.png';
 import BlackLogo from './blackLogo.png';
 import ContactUsBanner from './contact-us.png';
 import ArrowRight from './arrow-right.png';
@@ -44,16 +52,16 @@ import FacebookIconBlack from './facebookBlack.svg';
 import InstagramIconBlack from './instagramIConblck.svg';
 import youtubeIconBlack from './youtubeBlack.svg';
 import LogoWhite from './LogoWhite.svg';
-import trayTableClr1 from './trayTableClr_Black.png';
-import trayTableClr2 from './trayTavleClr_Brown.png';
-import trayTableClr3 from './trayTavleClr_Red.png';
-import trayTableClr4 from './trayTavleClr_White.png';
-import trayTableIMG1 from './trayTavleIMG1.png';
-import trayTableIMG2 from './trayTavleIMG2.png';
-import trayTableIMG3 from './trayTavleIMG3.png';
-import trayTableIMG4 from './trayTavleIMG4.png';
+import TableImage from './table.png';
+import mail from './email.svg';
+import ProductImage from './ProductImage.jpg';
+import Sort1 from './Sort1.svg';
+import Sort2 from './Sort2.svg';
+import Sort3 from './Sort3.svg';
+import Sort4 from './Sort4.png';
 
 export {
+  ProductImage,
   trayTableIMG1,
   trayTableIMG2,
   trayTableIMG3,
@@ -92,6 +100,11 @@ export {
   Contact,
   Email,
   Map,
+  mail,
+  Sort1,
+  Sort2,
+  Sort3,
+  Sort4,
   Shipping,
   Money,
   Lock,
@@ -108,4 +121,5 @@ export {
   InstagramIconBlack,
   youtubeIconBlack,
   LogoWhite,
+  TableImage,
 };
