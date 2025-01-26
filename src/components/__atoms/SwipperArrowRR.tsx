@@ -1,13 +1,10 @@
 'use client';
 type SwpperArrowRProps = {
   index: number;
-  SwipperSlidesArr: any[];
+  productArr: any[];
 };
 
-const SwpperArrowR: React.FC<SwpperArrowRProps> = ({
-  index,
-  SwipperSlidesArr,
-}) => {
+const SwpperArrowRR: React.FC<SwpperArrowRProps> = ({ index, productArr }) => {
   return (
     <svg
       width='32'
@@ -18,21 +15,21 @@ const SwpperArrowR: React.FC<SwpperArrowRProps> = ({
     >
       <path
         d='M6.66666 16H25.3333'
-        stroke={index === SwipperSlidesArr.length - 1 ? '#6C7275' : '#141718'}
+        stroke={index === productArr.length - 1 ? '#6C7275' : '#141718'}
         stroke-width='2'
         stroke-linecap='round'
         stroke-linejoin='round'
       />
       <path
         d='M17.3333 24L25.3333 16'
-        stroke={index === SwipperSlidesArr.length - 1 ? '#6C7275' : '#141718'}
+        stroke={index === productArr.length - 1 ? '#6C7275' : '#141718'}
         stroke-width='2'
         stroke-linecap='round'
         stroke-linejoin='round'
       />
       <path
         d='M17.3333 8L25.3333 16'
-        stroke={index === SwipperSlidesArr.length - 1 ? '#6C7275' : '#141718'}
+        stroke={index === productArr.length - 1 ? '#6C7275' : '#141718'}
         stroke-width='2'
         stroke-linecap='round'
         stroke-linejoin='round'
@@ -41,4 +38,4 @@ const SwpperArrowR: React.FC<SwpperArrowRProps> = ({
   );
 };
 
-export default SwpperArrowR;
+export default SwpperArrowRR;

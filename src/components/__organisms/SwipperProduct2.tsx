@@ -7,11 +7,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-// import { SwipperSlidesArr } from '@/commons/services/swipperSlides';
 import Image from 'next/image';
-import SwpperArrowR from '../__atoms/SwpperArrowR';
 import SwipperArrowL from '../__atoms/SwipperArrowL';
 import { product } from '@/commons/services/productDetails';
+import SwpperArrowRR from '../__atoms/SwipperArrowRR';
 
 const SwipperProduct2 = () => {
   const paginationRef = useRef<HTMLDivElement>(null);
@@ -78,7 +77,7 @@ const SwipperProduct2 = () => {
         <SwipperArrowL index={index} />
       </button>
       <button className='custom-next3'>
-        <SwpperArrowR index={index} productArr={product.images} />
+        <SwpperArrowRR index={index} productArr={product.images} />
       </button>
 
       <div className='max-w-[547px] w-full mt-[24px] flex justify-between'>
