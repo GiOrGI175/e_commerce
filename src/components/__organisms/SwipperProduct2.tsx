@@ -90,7 +90,7 @@ const SwipperProduct2 = () => {
             onClick={() => handleThumbnailClick(idx)}
             style={{ cursor: 'pointer' }}
           >
-            <div className='w-[167px] h-[167px] overflow-hidden'>
+            <div className='max-w-[167px] w-full max-h-[167px] h-full overflow-hidden flex justify-center items-center'>
               <Image
                 src={item}
                 width={167}

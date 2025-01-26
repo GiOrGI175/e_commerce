@@ -10,7 +10,7 @@ const ProductDetails = () => {
   const [hoverIndex, setHoverIndex] = useState<null | number>(null);
 
   return (
-    <div className='ml-[63px]'>
+    <div className='sm:ml-[63px] mt-[220px] sm:mt-[0px]'>
       <div className='flex items-center'>
         <div className='flex gap-[2px] mr-[10px]'>
           {product.stars.map((star) => (
