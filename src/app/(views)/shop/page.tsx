@@ -5,6 +5,7 @@ export default function Shop() {
   return (
     <section className='max-w-[1440px] w-full flex justify-center '>
       shop{' '}
+      
     </section>
   );
 }
