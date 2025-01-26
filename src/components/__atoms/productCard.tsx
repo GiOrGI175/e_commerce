@@ -94,7 +94,7 @@ export default function ProductCard({
             <div className="flex flex-col gap-y-[8px]">
               <button
                 onClick={() =>
-                  addToCart({
+                  onAddToCart({
                     id,
                     name,
                     price,
