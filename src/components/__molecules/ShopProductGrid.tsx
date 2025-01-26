@@ -3,6 +3,7 @@ import ProductCard from "../__atoms/productCard";
 import { products } from "@/commons/services/product";
 import { ProductImage } from "@/utility/images/ImgExport";
 import { cartList } from "@/commons/services/cartList";
+import useCartStore from "../__atoms/CartStore";
 
 export default function ShopProductGrid({ layout, setLayout }: any) {
   const [visibleProducts, setVisibleProducts] = useState<any>([]);
@@ -23,17 +24,15 @@ export default function ShopProductGrid({ layout, setLayout }: any) {
     updateVisibleProducts();
     window.addEventListener("resize", updateVisibleProducts);
   }, [products, page]);
-
-  const [cart, setCart] = useState<any>([]);
-  console.log(cart)
-
+  const cart = useCartStore((state) => state.cart);
+  const addToCart = useCartStore((state) => state.addToCart);
+  console.log(cart);
   return (
     <div className="flex flex-col items-center h-fit col-start-1 row-start-3 sm:col-start-2 sm:row-start-2">
       <div className="flex flex-wrap justify-center gap-[16px]">
         {visibleProducts.map((el: any) => (
           <ProductCard
-            setCart={setCart}
-            cart={cart}
+            onAddToCart={() => addToCart(el)}
             id={el.id}
             layout={layout}
             setLayout={setLayout}

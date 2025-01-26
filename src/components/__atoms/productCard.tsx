@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function ProductCard({
-  setCart,
+  onAddToCart,
   id,
   layout,
   ProductImage,
@@ -20,26 +20,6 @@ export default function ProductCard({
 
   const handleMouseLeave = () => {
     setShowAddToCart(false);
-  };
-
-  const addToCart = (product: any) => {
-    setCart((prevCart: any[]) => {
-      const existingProduct = prevCart.find(
-        (item: any) => item.id === product.id
-      );
-
-      if (existingProduct) {
-        // If the product already exists in the cart, update its quantity
-        return prevCart.map((item: any) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      } else {
-        // If the product is new, add it to the cart
-        return [...prevCart, { ...product, quantity: 1 }];
-      }
-    });
   };
 
   return (
@@ -77,7 +57,7 @@ export default function ProductCard({
           <div className="flex justify-center">
             <button
               onClick={() =>
-                addToCart({
+                onAddToCart({
                   id,
                   name,
                   price,

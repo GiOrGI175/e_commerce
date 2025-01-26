@@ -1,5 +1,5 @@
-"use client"
-import create from 'zustand';
+"use client";
+import { create } from "zustand";
 
 const useCartStore = create((set) => ({
   cart: [], // Initialize the cart as an empty array
