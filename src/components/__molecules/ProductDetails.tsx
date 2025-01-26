@@ -1,44 +1,50 @@
 'use client';
 
-import { product } from '@/commons/services/productDetails';
-import Image from 'next/image';
 import { useState } from 'react';
+import Image from 'next/image';
 import AddToCart from '../__atoms/AddToCart';
+import useSetObj from '../__atoms/SetObj';
 
 const ProductDetails = () => {
-  const [color, setColor] = useState(product.chooseColor[0].color);
+  const myObject = useSetObj((state: any) => state.myObject);
+
+  const [color, setColor] = useState(myObject?.chooseColor[0].color || '');
   const [hoverIndex, setHoverIndex] = useState<null | number>(null);
+
+  if (!myObject) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className='sm:ml-[63px] mt-[220px] sm:mt-[0px]'>
       <div className='flex items-center'>
         <div className='flex gap-[2px] mr-[10px]'>
-          {product.stars.map((star) => (
-            <div>
+          {myObject.stars.map((star: any, index: any) => (
+            <div key={index}>
               <Image src={star} width={16} height={16} alt='stars' />
             </div>
           ))}
         </div>
         <div>
           <span className='font-poppins font-normal text-[12px]  leading-[20px] tracking-tighter-[-0.1px]  text-[#141718]'>
-            {product.reviews} reviews
+            {myObject.reviews} reviews
           </span>
         </div>
       </div>
 
       <div>
         <h2 className='my-[16px] font-poppins font-medium text-[40px]  leading-[44px] tracking-tighter-[-0.4px]  text-[#141718]'>
-          {product.name}
+          {myObject.name}
         </h2>
         <p className='mb-[16px] max-w-[430px]  font-poppins font-normal text-[16px]  leading-[26px] text-[#6C7275]'>
-          {product.description}
+          {myObject.description}
         </p>
         <div className='flex'>
           <span className='mr-[12px] font-poppins font-medium text-[28px] leading-[34px] tracking-tighter-[-0.6px]  text-[#121212]'>
-            ${product.price}
+            ${myObject.price}
           </span>
           <span className='font-poppins font-medium text-[20px] leading-[28px]  text-[#6C7275] line-through'>
-            ${product.oldPrice}
+            ${myObject.oldPrice}
           </span>
         </div>
       </div>
@@ -48,7 +54,7 @@ const ProductDetails = () => {
           Measurements
         </span>
         <span className='mt-[8px] font-Inter font-normal text-[20px] leading-[32px]  text-[#141718] '>
-          {product.measurements}
+          {myObject.measurements}
         </span>
       </div>
 
@@ -60,7 +66,7 @@ const ProductDetails = () => {
           {color}
         </span>
         <div className='flex gap-[16px]'>
-          {product.chooseColor.map((item, index) => {
+          {myObject.chooseColor.map((item: any, index: any) => {
             return (
               <div
                 className={`max-w-[72px] max-h-[72px] overflow-hidden ${
@@ -70,15 +76,14 @@ const ProductDetails = () => {
                   setHoverIndex(index);
                   setColor(item.color);
                 }}
+                key={index}
               >
                 <Image src={item.img} width={72} height={72} alt='color' />
               </div>
             );
           })}
         </div>
-        <>
-          <AddToCart />
-        </>
+        <AddToCart />
         <div className='py-[24px] mt-[32px] border-t-[1px] border-[#E8ECEF]'>
           <div className='flex'>
             <div className='w-[125px]'>
@@ -88,7 +93,7 @@ const ProductDetails = () => {
             </div>
             <div>
               <span className=' font-Inter font-normal text-[12px] leading-[20px]  text-[#141718]'>
-                {product.SKU}
+                {myObject.SKU}
               </span>
             </div>
           </div>
@@ -99,7 +104,7 @@ const ProductDetails = () => {
               </span>
             </div>
             <div className=' font-Inter font-normal text-[12px] leading-[20px]  text-[#141718]'>
-              <span>{product.category}</span>
+              <span>{myObject.category}</span>
             </div>
           </div>
         </div>

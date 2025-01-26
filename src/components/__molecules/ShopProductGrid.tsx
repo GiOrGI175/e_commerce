@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
-import ProductCard from "../__atoms/productCard";
-import { products } from "@/commons/services/product";
-import { ProductImage } from "@/utility/images/ImgExport";
-import { cartList } from "@/commons/services/cartList";
-import useCartStore from "../__atoms/CartStore";
+import React, { useEffect, useState } from 'react';
+import ProductCard from '../__atoms/productCard';
+import { products } from '@/commons/services/product';
+import { ProductImage } from '@/utility/images/ImgExport';
+import { cartList } from '@/commons/services/cartList';
+import useCartStore from '../__atoms/CartStore';
+import useSetObj from '../__atoms/SetObj';
+import useObjectStore from '../__atoms/SetObj';
 
 export default function ShopProductGrid({ layout, setLayout }: any) {
   const [visibleProducts, setVisibleProducts] = useState<any>([]);
@@ -22,17 +24,21 @@ export default function ShopProductGrid({ layout, setLayout }: any) {
     };
 
     updateVisibleProducts();
-    window.addEventListener("resize", updateVisibleProducts);
+    window.addEventListener('resize', updateVisibleProducts);
   }, [products, page]);
-  const cart = useCartStore((state) => state.cart);
-  const addToCart = useCartStore((state) => state.addToCart);
+  const cart = useCartStore((state: any) => state.cart);
+  const addToCart = useCartStore((state: any) => state.addToCart);
   console.log(cart);
+
+  const setMyObject = useObjectStore((state: any) => state.setMyObject);
+
   return (
-    <div className="flex flex-col items-center h-fit col-start-1 row-start-3 sm:col-start-2 sm:row-start-2">
-      <div className="flex flex-wrap justify-center gap-[16px]">
+    <div className='flex flex-col items-center h-fit col-start-1 row-start-3 sm:col-start-2 sm:row-start-2'>
+      <div className='flex flex-wrap justify-center gap-[16px]'>
         {visibleProducts.map((el: any) => (
           <ProductCard
             onAddToCart={() => addToCart(el)}
+            setMyObject={setMyObject}
             id={el.id}
             layout={layout}
             setLayout={setLayout}
@@ -45,13 +51,21 @@ export default function ShopProductGrid({ layout, setLayout }: any) {
             price={el.price}
             rating={el.rating}
             isNew={el.isNew}
+            image={el.image}
+            images={el.images}
+            stars={el.stars}
+            category={el.category}
+            wishlist={el.wishlist}
+            quantity={el.quantity}
+            SKU={el.SKU}
+            chooseColor={el.chooseColor}
           />
         ))}
       </div>
       <div>
         <button
           onClick={handleClick}
-          className="font-medium mt-[80px] py-[6px]  px-[40px] border-[2px] border-black rounded-2xl"
+          className='font-medium mt-[80px] py-[6px]  px-[40px] border-[2px] border-black rounded-2xl'
         >
           Show More
         </button>
