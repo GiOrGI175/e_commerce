@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../__atoms/productCard";
 import { products } from "@/commons/services/product";
 import { ProductImage } from "@/utility/images/ImgExport";
+import { cartList } from "@/commons/services/cartList";
 
 export default function ShopProductGrid({ layout, setLayout }: any) {
   const [visibleProducts, setVisibleProducts] = useState<any>([]);
@@ -13,20 +14,26 @@ export default function ShopProductGrid({ layout, setLayout }: any) {
   };
   useEffect(() => {
     const updateVisibleProducts = () => {
-      const isMobile = window.innerWidth <= 1047; // Check for mobile
-      const itemRendered = isMobile ? 8 : 9; // 8 items on mobile, 9 on PC
+      const isMobile = window.innerWidth <= 1047;
+      const itemRendered = isMobile ? 8 : 9;
       const itemAdded = isMobile ? 2 : 3;
-      setVisibleProducts(products.slice(0, itemRendered + itemAdded * page)); // Slice based on page
+      setVisibleProducts(products.slice(0, itemRendered + itemAdded * page));
     };
 
-    updateVisibleProducts(); // Initial check
-    window.addEventListener("resize", updateVisibleProducts); // Update on resize
+    updateVisibleProducts();
+    window.addEventListener("resize", updateVisibleProducts);
   }, [products, page]);
+
+  const [cart, setCart] = useState<any>([]);
+
   return (
-    <div className="flex flex-col items-center">
-      <div className="flex flex-wrap justify-center gap-[24px]">
+    <div className="flex flex-col items-center h-fit col-start-1 row-start-3 sm:col-start-2 sm:row-start-2">
+      <div className="flex flex-wrap justify-center gap-[16px]">
         {visibleProducts.map((el: any) => (
           <ProductCard
+            setCart={setCart}
+            cart={cart}
+            id={el.id}
             layout={layout}
             setLayout={setLayout}
             key={el.id}
