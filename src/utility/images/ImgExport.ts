@@ -44,6 +44,7 @@ import FacebookIconBlack from "./facebookBlack.svg";
 import InstagramIconBlack from "./instagramIConblck.svg";
 import youtubeIconBlack from "./youtubeBlack.svg";
 import LogoWhite from "./LogoWhite.svg";
+import TableImage from "./table.png"
 import mail from "./email.svg";
 import ProductImage from "./ProductImage.jpg";
 import Sort1 from "./Sort1.svg";
@@ -104,4 +105,6 @@ export {
   InstagramIconBlack,
   youtubeIconBlack,
   LogoWhite,
+  TableImage,
+  
 };

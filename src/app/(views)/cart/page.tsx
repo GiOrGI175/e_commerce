@@ -1,6 +1,33 @@
-import React from "react";
+"use client";
+import Checkout from "@/components/__molecules/Checkout";
+import Order from "@/components/__molecules/Order";
+import Shopping from "@/components/__molecules/Shopping";
+import { TableImage } from "@/utility/images/ImgExport";
+import { AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import React, { useState } from "react";
 
 export default function Cart() {
+  const [checkOut, isCheckOut] = useState(false);
+  const [shopping, isShopping] = useState(true);
+  const [order, isOrder] = useState(false);
+  const handleCheckOut = () => {
+    isCheckOut(true);
+    console.log(checkOut);
+    isOrder(false);
+    isShopping(false);
+  };
+
+  const handleShopping = () => {
+    isCheckOut(false);
+    isOrder(false);
+    isShopping(true);
+  };
+  const handleOrder = () => {
+    isShopping(false);
+    isOrder(true);
+    isCheckOut(false);
+  };
   return (
     <div className="max-w-[1120px] w-full">
       <h2 className="text-center mt-20 text-[58px] leading-[54px] font-medium text-[#000000]">
@@ -11,45 +38,39 @@ export default function Cart() {
           <div className="bg-[#23262F] w-[42px] h-[42px] rounded-[40px] flex justify-center items-center">
             <h5 className="text-white font-medium text-[16px] leading-4">1</h5>
           </div>
-          <h5 className="text-black font-semibold text-[16px] leading-7 ml-[17px]">
+          <button
+            className="text-black font-semibold text-[16px] leading-7 ml-[17px]"
+            onClick={handleShopping}
+          >
             Shopping cart
-          </h5>
+          </button>
         </div>
-        <div className="flex items-center ">
-          <div className="bg-[#23262F] w-[42px] h-[42px] rounded-[40px] flex justify-center items-center">
+        <div className="flex items-center   ">
+          <div className="bg-[#23262f7a] w-[42px] h-[42px] rounded-[40px] flex justify-center items-center">
             <h5 className="text-white font-medium text-[16px] leading-4">2</h5>
           </div>
-          <h5 className="text-black font-semibold text-[16px] leading-7 ml-[17px]">
+          <button
+            onClick={handleCheckOut}
+            className="text-black font-semibold text-[16px] leading-7 ml-[17px] hidden sm:flex"
+          >
             Checkout details
-          </h5>
+          </button>
         </div>
-        <div className="flex items-center ">
+        <div className="sm:flex items-center hidden ">
           <div className="bg-[#23262F] w-[42px] h-[42px] rounded-[40px] flex justify-center items-center">
             <h5 className="text-white font-medium text-[16px] leading-4">3</h5>
           </div>
-          <h5 className="text-black font-semibold text-[16px] leading-7 ml-[17px]">
+          <button
+            className="text-black font-semibold text-[16px] leading-7 ml-[17px]"
+            onClick={handleOrder}
+          >
             Order complete
-          </h5>
+          </button>
         </div>
       </div>
-      <div className="flex mt-[80px]">
-        <div className="w-full">
-          <div className=" max-w-[643px] w-full ">
-            <div className="w-full flex  justify-between h-[50px] border-b-[1px] border-black text-[#121212] font-semibold">
-              <h5>Product</h5>
-              <div className="max-w-[322px] w-full flex justify-between">
-                <h5>Quantity</h5>
-                <h5>Price</h5>
-                <h5>Subtotal</h5>
-              </div>
-            </div>
-            <div className="h-[144px]">
-                
-
-            </div>
-          </div>
-        </div>
-      </div>
+      {checkOut && <Checkout />}
+      <AnimatePresence>{shopping && <Shopping />}</AnimatePresence>
+      {order && <Order />}
     </div>
   );
 }
