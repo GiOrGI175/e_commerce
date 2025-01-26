@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState } from "react";
 
 export default function ProductCard({
   layout,
@@ -12,8 +13,19 @@ export default function ProductCard({
   isNew,
   description,
 }: any) {
+  const [showAddToCart, setShowAddToCart] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowAddToCart(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowAddToCart(false);
+  };
   return (
     <div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       className={`${
         layout === "Sort3"
           ? "min-w-[548px] h-fit flex gap-x-[24px] items-center"
@@ -40,7 +52,13 @@ export default function ProductCard({
             </div>
           </div>
         </div>
-        <button className=" flex justify-center">Add To Cart</button>
+        {showAddToCart && (
+          <div className="flex justify-center">
+            <button className="absolute bottom-4 max-w-[200px] w-full bg-black text-white rounded-md py-[9px]">
+              Add To Cart
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Product Info */}
@@ -53,11 +71,13 @@ export default function ProductCard({
           <span>★</span>
           <span>★</span>
           <span>★</span>
+          <span>★</span>
+          <span>★</span>
         </div>
         {/* Product Name */}
         <p className="font-semibold text-base ">{name}</p>
         {/* Price */}
-        <span className=" font-medium text-xs">{price}</span>
+        <span className=" font-bold text-xs">{price}</span>
         {layout == "Sort3" && (
           <>
             <p>{description}</p>
