@@ -25,6 +25,7 @@ export default function ShopProductGrid({ layout, setLayout }: any) {
   }, [products, page]);
 
   const [cart, setCart] = useState<any>([]);
+  console.log(cart)
 
   return (
     <div className="flex flex-col items-center h-fit col-start-1 row-start-3 sm:col-start-2 sm:row-start-2">
