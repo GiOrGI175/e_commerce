@@ -16,8 +16,8 @@ export default function ProductCard({
     <div
       className={`${
         layout === "Sort3"
-          ? "basis-[548px] h-fit flex flex-grow flex-wrap gap-x-[24px] items-center"
-          : "h-fit border-gray-200 rounded-lg overflow-hidden basis-[220px] flex-grow "
+          ? "min-w-[548px] h-fit flex gap-x-[24px] items-center"
+          : "h-fit border-gray-200 rounded-lg overflow-hidden max-w-[262px] "
       }`}
     >
       <div className="relative w-[240px]">
@@ -40,6 +40,7 @@ export default function ProductCard({
             </div>
           </div>
         </div>
+        <button className=" flex justify-center">Add To Cart</button>
       </div>
 
       {/* Product Info */}
