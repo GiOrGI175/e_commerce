@@ -3,7 +3,7 @@ import React from "react";
 export default function ShopTopFilters() {
   return (
     <>
-      <div className="flex max-w-[548px] w-full justify-between gap-x-[10px]">
+      <div className="flex max-w-[548px] w-full  justify-between  gap-x-[10px]">
         <div className="max-w-[262px] w-full  gap-y-[8px]">
           <h4 className="font-bold text-[#6C7275] text-[16px]">Category</h4>
           <select

@@ -9,6 +9,8 @@ export const products = [
     isNew: true,
     description: "lorem lorem lorem lorem lorem lorem",
     image: "loveseat-sofa.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
   {
     id: 2,
@@ -20,6 +22,8 @@ export const products = [
     description: "lorem lorem lorem lorem lorem lorem",
     isNew: true,
     image: "luxury-sofa.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
   {
     id: 3,
@@ -31,6 +35,8 @@ export const products = [
     isNew: true,
     description: "lorem lorem lorem lorem lorem lorem",
     image: "table-lamp.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
   {
     id: 4,
@@ -42,6 +48,8 @@ export const products = [
     rating: 5,
     isNew: true,
     image: "white-drawer-unit.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
   {
     id: 5,
@@ -53,6 +61,8 @@ export const products = [
     isNew: true,
     description: "lorem lorem lorem lorem lorem lorem",
     image: "black-tray-table.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
   {
     id: 6,
@@ -64,6 +74,8 @@ export const products = [
     rating: 5,
     isNew: true,
     image: "bamboo-basket.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
   {
     id: 7,
@@ -75,6 +87,8 @@ export const products = [
     isNew: true,
     description: "lorem lorem lorem lorem lorem lorem",
     image: "off-white-pillow.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
   {
     id: 8,
@@ -86,6 +100,8 @@ export const products = [
     isNew: true,
     description: "lorem lorem lorem lorem lorem lorem",
     image: "light-beige-pillow.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
   {
     id: 9,
@@ -97,6 +113,8 @@ export const products = [
     description: "lorem lorem lorem lorem lorem lorem",
     isNew: true,
     image: "black-brow-side-table.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
   {
     id: 10,
@@ -108,6 +126,8 @@ export const products = [
     isNew: true,
     description: "lorem lorem lorem lorem lorem lorem",
     image: "cozy-sofa.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
   {
     id: 11,
@@ -119,6 +139,8 @@ export const products = [
     isNew: true,
     description: "lorem lorem lorem lorem lorem lorem",
     image: "modern-chair.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
   {
     id: 12,
@@ -130,6 +152,8 @@ export const products = [
     isNew: true,
     description: "lorem lorem lorem lorem lorem lorem",
     image: "floor-lamp.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
   {
     id: 13,
@@ -141,6 +165,8 @@ export const products = [
     isNew: true,
     description: "lorem lorem lorem lorem lorem lorem",
     image: "round-coffee-table.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
   {
     id: 14,
@@ -152,5 +178,7 @@ export const products = [
     rating: 5,
     isNew: true,
     image: "office-chair.jpg",
+    color: ["black"],
+    measurments: "17 1/2x20 5/8 ",
   },
 ];
