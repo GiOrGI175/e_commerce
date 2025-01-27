@@ -12,7 +12,7 @@ export default function Cart() {
   const [checkOut, isCheckOut] = useState(false);
   const [shopping, isShopping] = useState(true);
   const [order, isOrder] = useState(false);
-  const cart = useCartStore((state: any) => state.cart);
+  const cart = useCartStore((state) => state.cart);
   const handleCheckOut = () => {
     isCheckOut(true);
     console.log(checkOut);
