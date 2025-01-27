@@ -3,5 +3,9 @@ import Image from "next/image";
 import HomePage from "./(views)/home/page";
 
 export default function Home() {
-  return <HomePage />;
+  return (
+    <>
+      <HomePage />;
+    </>
+  );
 }

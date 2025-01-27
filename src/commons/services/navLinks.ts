@@ -1,18 +1,18 @@
 export const navLinks = [
   {
-    link: "/",
-    title: "Home",
+    link: '/Home',
+    title: 'Home',
   },
   {
-    link: "/shop",
-    title: "Shop",
+    link: '/Shop',
+    title: 'Shop',
   },
   {
-    link: "/product",
-    title: "Product",
+    link: '/product',
+    title: 'Product',
   },
   {
-    link: "/contact-us",
-    title: "Contact Us",
+    link: '/contact-us',
+    title: 'Contact Us',
   },
 ];

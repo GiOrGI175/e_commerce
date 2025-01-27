@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import { Adress, Contact, Email, Map } from "@/utility/images/ImgExport";
 import Image from "next/image";
+import { useForm } from "react-hook-form";
 
 export default function ContactUsS3() {
   return (
@@ -45,15 +47,19 @@ export default function ContactUsS3() {
       </div>
       <div className="flex flex-col sm:flex-row justify-between mt-[40px] gap-[28px]">
         <div className="w-full">
-          <form action="" className="">
+          <form
+            action="https://formspree.io/f/xvgorllp"
+            className=""
+            method="POST"
+          >
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">
                 FULL NAME
               </label>
               <input
                 type="text"
-                id="email"
-                name="email"
+                id="name"
+                name="name"
                 placeholder="Your Name"
                 className="w-full px-3 py-2 border mt-[12px] border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
@@ -77,9 +83,9 @@ export default function ContactUsS3() {
                 MESSAGE
               </label>
               <input
-                type="email"
-                id="email"
-                name="email"
+                type="text"
+                id="text"
+                name="text"
                 placeholder="Your Message"
                 className="w-full h-[140px] mt-[12px] px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
@@ -93,7 +99,13 @@ export default function ContactUsS3() {
             </button>
           </form>
         </div>
-        <Image src={Map} width={548} height={404} alt="Map" className="m-auto sm:m-0" />
+        <Image
+          src={Map}
+          width={548}
+          height={404}
+          alt="Map"
+          className="m-auto sm:m-0"
+        />
       </div>
     </div>
   );
