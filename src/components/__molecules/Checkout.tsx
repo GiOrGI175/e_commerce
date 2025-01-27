@@ -8,11 +8,11 @@ export default function Checkout() {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors } 
   } = useForm();
   const [selectedMethod, setSelectedMethod] = useState("creditCard");
 
-  const onSubmit = (data) => {
+  const onSubmit = (data:any) => {
     console.log("Payment Data:", data);
   };
 
@@ -43,11 +43,11 @@ export default function Checkout() {
                     className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter your first name"
                   />
-                  {errors.firstName && (
+                  {/* {errors.firstName && (
                     <p className="text-red-500 text-sm mt-1">
                       {errors.firstName.message}
                     </p>
-                  )}
+                  )} */}
                 </div>
 
                 {/* Last Name */}
@@ -67,11 +67,11 @@ export default function Checkout() {
                     className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter your last name"
                   />
-                  {errors.lastName && (
+                  {/* {errors.lastName && (
                     <p className="text-red-500 text-sm mt-1">
                       {errors.lastName.message}
                     </p>
-                  )}
+                  )} */}
                 </div>
               </div>
 
@@ -96,11 +96,11 @@ export default function Checkout() {
                   className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter your phone number"
                 />
-                {errors.phoneNumber && (
+                {/* {errors.phoneNumber && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.phoneNumber.message}
                   </p>
-                )}
+                )} */}
               </div>
 
               {/* Email */}
@@ -121,15 +121,14 @@ export default function Checkout() {
                   className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter your email"
                 />
-                {errors.email && (
+                {/* {errors.email && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.email.message}
                   </p>
-                )}
+                )} */}
               </div>
-
-              {/* Submit Button */}
             </div>
+
             <div className="max-w-[643px] w-full  mt-8 p-4 border border-gray-300 rounded-md flex flex-col gap-6">
               <div className="flex flex-col space-y-2">
                 <h1 className="text-xl font-bold mb-4">Credit Card</h1>
@@ -159,11 +158,11 @@ export default function Checkout() {
                       className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="Enter your card number"
                     />
-                    {errors.cardNumber && (
+                    {/* {errors.cardNumber && (
                       <p className="text-red-500 text-sm mt-1">
                         {errors.cardNumber.message}
                       </p>
-                    )}
+                    )} */}
                   </div>
 
                   {/* Expiration Date */}
@@ -187,11 +186,11 @@ export default function Checkout() {
                       className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="MM/YY"
                     />
-                    {errors.expirationDate && (
+                    {/* {errors.expirationDate && (
                       <p className="text-red-500 text-sm mt-1">
                         {errors.expirationDate.message}
                       </p>
-                    )}
+                    )} */}
                   </div>
 
                   {/* CVC */}
@@ -212,11 +211,11 @@ export default function Checkout() {
                       className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="Enter your CVC"
                     />
-                    {errors.cvc && (
+                    {/* {errors.cvc && (
                       <p className="text-red-500 text-sm mt-1">
                         {errors.cvc.message}
                       </p>
-                    )}
+                    )} */}
                   </div>
                 </div>
               )}
