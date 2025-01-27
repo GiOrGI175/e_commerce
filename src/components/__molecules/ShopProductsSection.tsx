@@ -13,8 +13,8 @@ export default function ShopProductsSection() {
       <div
         className={`max-w-[1188px] w-full px-[34px] grid ${
           layout === "Sort1"
-            ? "sm:grid-cols-[262px,1fr] sm:grid-rows-[auto,1fr] grid-cols-[1fr] grid-rows-[56px,26px,1fr]"
-            : "grid-cols-[1fr] grid-rows-[84px,1fr]"
+            ? "sm:grid-cols-[262px,1fr] sm:grid-rows-[auto,1fr] grid-cols-[1fr] grid-rows-[96px,1fr]"
+            : "grid-cols-[1fr] sm:grid-rows-[84px,1fr] grid-rows-[200px,1fr] "
         } gap-[10px]`}
       >
         {layout === "Sort1" && <ShopFilterSidebar />}
@@ -23,7 +23,7 @@ export default function ShopProductsSection() {
           className={`${
             layout == "Sort1"
               ? ""
-              : "flex justify-between items-center col-span-2"
+              : "flex flex-col sm:flex-row justify-between items-center col-span-2"
           } `}
         >
           {(layout === "Sort2" || layout == "Sort3") && <ShopTopFilters />}
