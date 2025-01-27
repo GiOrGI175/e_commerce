@@ -29,7 +29,7 @@ export default function ProductCard({
       className={`${
         layout === "Sort3"
           ? "max-w-[548px] h-fit flex flex-col sm:flex-row gap-x-[24px] items-center"
-          : "h-fit border-gray-200 rounded-lg overflow-hidden sm:max-w-[262px] max-w-[152px]"
+          : "h-fit border-gray-200 rounded-lg overflow-hidden max-w-[262px]"
       }`}
     >
       {/* Product Image */}
