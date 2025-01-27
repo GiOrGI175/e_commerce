@@ -23,12 +23,12 @@ import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import useCartStore from '../__atoms/CartStore';
 const Header = () => {
-  const cart = useCartStore((state) => state.cart);
+  const cart = useCartStore((state: any) => state.cart);
   const [isOpen, setIsOpen] = useState(false);
   const PathName = usePathname();
   const router = useRouter();
   const totalQuantity = cart.reduce(
-    (total, item) => total + (item.quantity || 1),
+    (total: any, item: any) => total + (item.quantity || 1),
     0
   );
 
