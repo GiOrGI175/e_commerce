@@ -1,7 +1,68 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import useCartStore from "../__atoms/CartStore";
+import Image from "next/image";
+import { TableImage } from "@/utility/images/ImgExport";
+import { motion } from "framer-motion";
 
 export default function Order() {
+  const cart = useCartStore((state) => state.cart);
+  const date = new Date();
+  const newDate =
+    date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const clearCart = useCartStore((state) => state.clearCart);
+
+  // useEffect(() => {
+  //   clearCart(); 
+  // }, [clearCart]);
   return (
-    <div>Order</div>
-  )
+    <motion.div
+      className="max-w-[738px] w-full h-[730px] m-auto text-center flex justify-center "
+      initial={{ opacity: 0, x: -100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 100 }}
+      transition={{ duration: 1 }}
+      viewport={{
+        once: true,
+      }}
+    >
+      <div className="max-w-[546px] w-full mt-[160px]">
+        <h2 className="text-[#6C7275] font-medium text-[28px] leading-8">
+          Thank you! 🎉
+        </h2>
+        <h1 className="font-medium text-[40px] leading-10 text-black mt-[16px]">
+          Your order has been received
+        </h1>
+        <div className="flex mt-[40px]">
+          {cart.map((item) => (
+            <Image
+              src={TableImage}
+              width={80}
+              height={96}
+              alt="image"
+              className="m-auto"
+            />
+          ))}
+        </div>
+        <div className="flex flex-col gap-5">
+          <div className="flex justify-between mt-10">
+            <h4>Order code:</h4>
+            <h4>#0123_45678</h4>
+          </div>
+          <div className="flex justify-between">
+            <h4>Date:</h4>
+            <h4>{newDate}</h4>
+          </div>
+          <div className="flex justify-between">
+            <h4>Total:</h4>
+            <h4>${total}</h4>
+          </div>
+          <div className="flex justify-between">
+            <h4>Payment method:</h4>
+            <h4>Credit Card</h4>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 }
