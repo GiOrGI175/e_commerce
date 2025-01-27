@@ -74,7 +74,6 @@ export default function ProductCard({
                   name,
                   price,
                 });
-
                 setMyObject({
                   id,
                   name,

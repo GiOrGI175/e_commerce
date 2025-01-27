@@ -7,6 +7,10 @@ import ShopProductGrid from "./ShopProductGrid";
 
 export default function ShopProductsSection() {
   const [layout, setLayout] = useState("Sort1");
+  const [filters, setFilters] = useState<any>({
+    category: "All Rooms",
+    priceRange: null,
+  });
 
   return (
     <div className="min-h-screen mt-[50px] max-w-[1440px] w-full mx-auto flex justify-center">
@@ -17,7 +21,9 @@ export default function ShopProductsSection() {
             : "grid-cols-[1fr] sm:grid-rows-[84px,1fr] grid-rows-[200px,1fr] "
         } gap-[10px]`}
       >
-        {layout === "Sort1" && <ShopFilterSidebar />}
+        {layout === "Sort1" && (
+          <ShopFilterSidebar filters={filters} setFilters={setFilters} />
+        )}
 
         <div
           className={`${
@@ -26,11 +32,13 @@ export default function ShopProductsSection() {
               : "flex flex-col sm:flex-row justify-between items-center col-span-2"
           } `}
         >
-          {(layout === "Sort2" || layout == "Sort3") && <ShopTopFilters />}
+          {(layout === "Sort2" || layout == "Sort3") && (
+            <ShopTopFilters filters={filters} setFilters={setFilters} />
+          )}
           <LayoutToggle layout={layout} setLayout={setLayout} />
         </div>
 
-        <ShopProductGrid layout={layout} setLayout={setLayout} />
+        <ShopProductGrid layout={layout} filters={filters} />
       </div>
     </div>
   );
