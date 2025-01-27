@@ -54,12 +54,6 @@ const LayoutToggle = ({
           >
             <Image src={Sort3} alt="Sort Icon" />
           </button>
-          <button
-            onClick={() => setLayout("Sort4")}
-            className={`${layout == "Sort4" ? "bg-[#E8ECEF]" : "bg-white"}`}
-          >
-            <Image src={Sort3} alt="Sort Icon" />
-          </button>
         </div>
       </div>
     </div>
