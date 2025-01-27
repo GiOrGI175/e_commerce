@@ -96,7 +96,7 @@ export default function ProductCard({
               }}
               className="absolute bottom-4 max-w-[200px] w-full bg-black text-white rounded-md py-[9px]"
             >
-              <Link href={`Shop/${id}`}>Add To Cart</Link>
+              <Link href={`shop/${id}`}>Add To Cart</Link>
             </button>
           </div>
         )}
