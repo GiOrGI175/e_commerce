@@ -11,15 +11,18 @@ interface FormData {
 }
 
 export default function SignIn() {
-  const [user,setUser] = useState([])
+  const route = useRouter();
+  const [user, setUser] = useState([]);
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>();
+    formState: { errors, isValid },
+  } = useForm<FormData>({
+    mode: "onChange",
+  });
   const router = useRouter();
   const RouterPush = () => {
-    router.push("/sign-up");
+    router.push("/");
   };
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
@@ -133,7 +136,10 @@ export default function SignIn() {
 
         <button
           type="submit"
-          className="bg-black text-white py-2 px-4 rounded mt-4"
+          className={`bg-black text-white py-2 px-4 rounded mt-4 ${
+            !isValid ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          disabled={!isValid} 
         >
           Sign In
         </button>
