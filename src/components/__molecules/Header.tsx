@@ -21,10 +21,16 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import useCartStore from "../__atoms/CartStore";
 const Header = () => {
+  const cart = useCartStore((state) => state.cart);
   const [isOpen, setIsOpen] = useState(false);
   const PathName = usePathname();
   const router = useRouter();
+  const totalQuantity = cart.reduce(
+    (total, item) => total + (item.quantity || 1),
+    0
+  );
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -34,7 +40,7 @@ const Header = () => {
     router.push("/sign-in");
   };
   const handleClickCart = () => {
-    router.push("/cart")
+    router.push("/cart");
   };
 
   return (
@@ -186,7 +192,7 @@ const Header = () => {
       <Navbar />
 
       {/* Action Icons */}
-      <div className="flex gap-4">
+      <div className="flex gap-4 items-center">
         <Image
           src={searchIcon}
           width={24}
@@ -210,6 +216,9 @@ const Header = () => {
           className="cursor-pointer mr-[32px] sm:mr-3"
           onClick={handleClickCart}
         />
+        <div className="w-6 h-6 flex justify-center items-center text-white bg-black rounded-[12px] ml-[-25px]">
+          {totalQuantity}
+        </div>
       </div>
     </header>
   );
