@@ -31,7 +31,7 @@ export default function Page() {
     <div className="flex flex-col smLarge:flex-row max-w-[1600px] items-center w-full">
       
       <div className="relative hidden smLarge:flex w-6/12  h-screen max-h-[1080px]">
-        {/* Background Image */}
+        
         <Image
           src="/AuthImage.png"
           layout="fill"
@@ -40,7 +40,7 @@ export default function Page() {
           className="z-0"
         />
 
-        {/* Logo */}
+        
         <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
           <Image
             src={BlackLogo}
@@ -52,9 +52,9 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Second Section for Mobile */}
+      
       <div className="flex justify-center items-center smLarge:hidden relative max-w-[500px] w-full h-[500px] m-auto">
-        {/* Background Image */}
+        
         <Image
           src="/AuthImage.png"
           layout="fill"
@@ -63,7 +63,7 @@ export default function Page() {
           className="z-0 m-auto"
         />
 
-        {/* Logo */}
+        
         <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
           <Image
             src={BlackLogo}
@@ -75,7 +75,7 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Form Section */}
+      
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col bg-[#FEFEFE] max-w-[456px] w-full p-8  m-auto"
