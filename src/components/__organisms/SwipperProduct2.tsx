@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
 import SwipperArrowL from '../__atoms/SwipperArrowL';
-import { product } from '@/commons/services/productDetails';
+import { productf } from '@/commons/services/productDetails';
 import SwpperArrowRR from '../__atoms/SwipperArrowRR';
 
 const SwipperProduct2 = () => {
@@ -61,7 +61,7 @@ const SwipperProduct2 = () => {
           }}
           onInit={(swiper) => setSwiperInstance(swiper)}
         >
-          {product.images.map((item, index) => {
+          {productf.images.map((item, index) => {
             return (
               <SwiperSlide className='swiper-slide3'>
                 <Image src={item} width={1120} height={537} alt='slide' />
@@ -77,11 +77,11 @@ const SwipperProduct2 = () => {
         <SwipperArrowL index={index} />
       </button>
       <button className='custom-next3'>
-        <SwpperArrowRR index={index} productArr={product.images} />
+        <SwpperArrowRR index={index} productArr={productf.images} />
       </button>
 
       <div className='max-w-[547px] w-full mt-[24px] flex justify-between'>
-        {product.images.map((item, idx) => (
+        {productf.images.map((item, idx) => (
           <div
             key={idx}
             className={`thumbnail ${

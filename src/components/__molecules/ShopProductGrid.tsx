@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import ProductCard from "../__atoms/productCard";
-import { products } from "@/commons/services/product";
-import { ProductImage } from "@/utility/images/ImgExport";
-import { cartList } from "@/commons/services/cartList";
+import React, { useEffect, useState } from 'react';
+import ProductCard from '../__atoms/productCard';
+import { products } from '@/commons/services/product';
+import { ProductImage } from '@/utility/images/ImgExport';
+import { cartList } from '@/commons/services/cartList';
 // import useCartStore from "../__atoms/CartStore";
-import useSetObj from "../__atoms/SetObj";
-import useObjectStore from "../__atoms/SetObj";
+import useSetObj from '../__atoms/SetObj';
+import useObjectStore from '../__atoms/SetObj';
 
 export default function ShopProductGrid({ layout, filters, setLayout }: any) {
   const [visibleProducts, setVisibleProducts] = useState<any>([]);
@@ -19,15 +19,15 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:3001/products");
+        const response = await fetch('http://localhost:3001/products');
         if (!response.ok) {
-          throw new Error("Failed to fetch products");
+          throw new Error('Failed to fetch products');
         }
         const data = await response.json();
         setProducts(data);
-        console.log(data, "dataa");
+        console.log(data, 'dataa');
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       }
     };
 
@@ -47,22 +47,22 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
   // Update visible products on page change or window resize
   useEffect(() => {
     updateVisibleProducts();
-    window.addEventListener("resize", updateVisibleProducts);
-    return () => window.removeEventListener("resize", updateVisibleProducts);
+    window.addEventListener('resize', updateVisibleProducts);
+    return () => window.removeEventListener('resize', updateVisibleProducts);
   }, [page, products]);
 
   // Update filtered products when filters or visible products change
   useEffect(() => {
     let updatedProducts = visibleProducts;
 
-    if (filters?.category && filters.category !== "All Rooms") {
+    if (filters?.category && filters.category !== 'All Rooms') {
       updatedProducts = updatedProducts.filter(
         (product: any) => product.category === filters.category
       );
     }
 
     if (filters?.priceRange) {
-      const [min, max] = filters.priceRange.split("-").map(Number);
+      const [min, max] = filters.priceRange.split('-').map(Number);
       updatedProducts = updatedProducts.filter((product: any) => {
         const price = product.price;
         return max ? price >= min && price <= max : price >= min;
@@ -76,12 +76,12 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
   return (
     <div
       className={`${
-        layout === "Sort2"
-          ? "col-start-1 col-span-2"
-          : "col-start-1 sm:col-start-2 sm:row-start-2"
+        layout === 'Sort2'
+          ? 'col-start-1 col-span-2'
+          : 'col-start-1 sm:col-start-2 sm:row-start-2'
       } flex flex-col items-center h-fit row-start-2`}
     >
-      <div className="flex flex-wrap justify-center gap-[16px]">
+      <div className='flex flex-wrap justify-center gap-[16px]'>
         {filteredProducts.length > 0 ? (
           filteredProducts.map((el: any) => (
             <ProductCard
@@ -117,7 +117,7 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
       <div>
         <button
           onClick={() => setPage((prev) => prev + 1)}
-          className="font-medium mt-[80px] py-[6px] px-[40px] border-[2px] border-black rounded-2xl"
+          className='font-medium mt-[80px] py-[6px] px-[40px] border-[2px] border-black rounded-2xl'
         >
           Show More
         </button>
