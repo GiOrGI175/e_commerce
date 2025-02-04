@@ -31,7 +31,7 @@ type Product = {
   chooseColor: ColorOptions[];
 };
 
-export const product: Product = {
+export const productf: Product = {
   id: 1,
   name: 'Tray Table',
   reviews: 11,

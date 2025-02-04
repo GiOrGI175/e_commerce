@@ -1,17 +1,50 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import AddToCart from '../__atoms/AddToCart';
 import useSetObj from '../__atoms/SetObj';
+import { useParams } from 'next/navigation';
+import { productf } from '@/commons/services/productDetails';
+
+type prodctT = {
+  desc: string;
+  imageUrl: string;
+  name: string;
+  price: number;
+  quantity: number;
+  _id: string;
+};
 
 const ProductDetails = () => {
-  const myObject = useSetObj((state: any) => state.myObject);
+  const params = useParams();
+  const { productId } = params;
 
-  const [color, setColor] = useState(myObject?.chooseColor[0].color || '');
+  console.log(productId, 'id');
+
+  const [product, setProduct] = useState<prodctT>();
+
+  useEffect(() => {
+    const fetchData = async (id: string | undefined) => {
+      try {
+        const res = await fetch(`http://localhost:3001/products/${id}`);
+        if (!res.ok) throw new Error('Failed to fetch product data');
+        const result = await res.json();
+        console.log(result);
+
+        setProduct(result);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData(productId);
+  }, [productId]);
+
+  const [color, setColor] = useState(productf?.chooseColor[0].color || '');
   const [hoverIndex, setHoverIndex] = useState<null | number>(null);
 
-  if (!myObject) {
+  if (!product) {
     return <div>Loading...</div>;
   }
 
@@ -19,7 +52,7 @@ const ProductDetails = () => {
     <div className='sm:ml-[63px] mt-[220px] sm:mt-[0px]'>
       <div className='flex items-center'>
         <div className='flex gap-[2px] mr-[10px]'>
-          {myObject.stars.map((star: any, index: any) => (
+          {productf.stars.map((star: any, index: any) => (
             <div key={index}>
               <Image src={star} width={16} height={16} alt='stars' />
             </div>
@@ -27,24 +60,24 @@ const ProductDetails = () => {
         </div>
         <div>
           <span className='font-poppins font-normal text-[12px]  leading-[20px] tracking-tighter-[-0.1px]  text-[#141718]'>
-            {myObject.reviews} reviews
+            {productf.reviews} reviews
           </span>
         </div>
       </div>
 
       <div>
         <h2 className='my-[16px] font-poppins font-medium text-[40px]  leading-[44px] tracking-tighter-[-0.4px]  text-[#141718]'>
-          {myObject.name}
+          {product.name}
         </h2>
         <p className='mb-[16px] max-w-[430px]  font-poppins font-normal text-[16px]  leading-[26px] text-[#6C7275]'>
-          {myObject.description}
+          {product.desc}
         </p>
         <div className='flex'>
           <span className='mr-[12px] font-poppins font-medium text-[28px] leading-[34px] tracking-tighter-[-0.6px]  text-[#121212]'>
-            ${myObject.price}
+            ${product.price}
           </span>
           <span className='font-poppins font-medium text-[20px] leading-[28px]  text-[#6C7275] line-through'>
-            ${myObject.oldPrice}
+            ${productf.oldPrice}
           </span>
         </div>
       </div>
@@ -54,7 +87,7 @@ const ProductDetails = () => {
           Measurements
         </span>
         <span className='mt-[8px] font-Inter font-normal text-[20px] leading-[32px]  text-[#141718] '>
-          {myObject.measurements}
+          {productf.measurements}
         </span>
       </div>
 
@@ -66,7 +99,7 @@ const ProductDetails = () => {
           {color}
         </span>
         <div className='flex gap-[16px]'>
-          {myObject.chooseColor.map((item: any, index: any) => {
+          {productf.chooseColor.map((item: any, index: any) => {
             return (
               <div
                 className={`max-w-[72px] max-h-[72px] overflow-hidden ${
@@ -93,7 +126,7 @@ const ProductDetails = () => {
             </div>
             <div>
               <span className=' font-Inter font-normal text-[12px] leading-[20px]  text-[#141718]'>
-                {myObject.SKU}
+                {productf.SKU}
               </span>
             </div>
           </div>
@@ -104,7 +137,7 @@ const ProductDetails = () => {
               </span>
             </div>
             <div className=' font-Inter font-normal text-[12px] leading-[20px]  text-[#141718]'>
-              <span>{myObject.category}</span>
+              <span>{productf.category}</span>
             </div>
           </div>
         </div>
