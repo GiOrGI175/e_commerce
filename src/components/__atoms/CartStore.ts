@@ -1,16 +1,30 @@
 'use client';
 import { create } from 'zustand';
 
-const useCartStore = create((set) => ({
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
+interface CartState {
+  cart: CartItem[];
+  addToCart: (product: CartItem) => void;
+  increaseQuantity: (id: string) => void;
+  decreaseQuantity: (id: string) => void;
+  clearCart: () => void;
+  removeFromCart: (productId: string) => void;
+}
+
+const useCartStore = create<CartState>((set) => ({
   cart: [],
-  addToCart: (product: any) =>
-    set((state: any) => {
-      const existingProduct = state.cart.find(
-        (item: any) => item.id === product.id
-      );
+  addToCart: (product) =>
+    set((state) => {
+      const existingProduct = state.cart.find((item) => item.id === product.id);
       if (existingProduct) {
         return {
-          cart: state.cart.map((item: any) =>
+          cart: state.cart.map((item) =>
             item.id === product.id
               ? { ...item, quantity: item.quantity + 1 }
               : item
