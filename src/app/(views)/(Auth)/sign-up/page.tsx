@@ -1,13 +1,14 @@
 "use client";
 import { BlackLogo } from "@/utility/images/ImgExport";
+import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 interface FormData {
-  name: string;
-  username: string;
+  fullName: string;
+  userName: string;
   email: string;
   password: string;
 }
@@ -23,15 +24,32 @@ export default function Page() {
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+      const res = await axios.post("http://localhost:3001/auth/signup", data);
+      if (res.status === 201) {
+        alert("You have registered successfully!");
+
+        setTimeout(() => {
+          // setIsLoading(false);
+          router.push("/sign-in");
+        }, 3000);
+      }
+    } catch (error: any) {
+      console.log(error);
+      if (error.response && error.response.status === 400) {
+        // setErrorMessage("User Already Exists");
+      } else {
+        // setErrorMessage(
+        //   "An unexpected error occurred. Please try again later."
+        // );
+      }
+    }
   };
 
   return (
     <div className="flex flex-col smLarge:flex-row max-w-[1600px] items-center w-full">
-      
       <div className="relative hidden smLarge:flex w-6/12  h-screen max-h-[1080px]">
-        
         <Image
           src="/AuthImage.png"
           layout="fill"
@@ -40,7 +58,6 @@ export default function Page() {
           className="z-0"
         />
 
-        
         <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
           <Image
             src={BlackLogo}
@@ -52,9 +69,7 @@ export default function Page() {
         </div>
       </div>
 
-      
       <div className="flex justify-center items-center smLarge:hidden relative max-w-[500px] w-full h-[500px] m-auto">
-        
         <Image
           src="/AuthImage.png"
           layout="fill"
@@ -63,7 +78,6 @@ export default function Page() {
           className="z-0 m-auto"
         />
 
-        
         <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
           <Image
             src={BlackLogo}
@@ -75,7 +89,6 @@ export default function Page() {
         </div>
       </div>
 
-      
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col bg-[#FEFEFE] max-w-[456px] w-full p-8  m-auto"
@@ -96,15 +109,17 @@ export default function Page() {
           </label>
           <input
             type="text"
-            id="name"
+            id="fullName"
             className="border-b-[1px] border-b-black py-2"
-            {...register("name", {
+            {...register("fullName", {
               required: "This is required",
               maxLength: { value: 20, message: "Max length exceeded" },
             })}
           />
-          {errors.name && (
-            <span className="text-red-500 text-sm">{errors.name.message}</span>
+          {errors.fullName && (
+            <span className="text-red-500 text-sm">
+              {errors.fullName.message}
+            </span>
           )}
         </div>
 
@@ -114,16 +129,16 @@ export default function Page() {
           </label>
           <input
             type="text"
-            id="username"
+            id="userName"
             className="border-b-[1px] border-b-black py-2"
-            {...register("username", {
+            {...register("userName", {
               required: "This is required",
               maxLength: { value: 15, message: "Max length exceeded" },
             })}
           />
-          {errors.username && (
+          {errors.userName && (
             <span className="text-red-500 text-sm">
-              {errors.username.message}
+              {errors.userName.message}
             </span>
           )}
         </div>
@@ -157,7 +172,7 @@ export default function Page() {
               required: "This is required",
               minLength: {
                 value: 6,
-                message: "Password must be at least 6 characters",
+                message: "Password must be at least 8 characters",
               },
             })}
           />

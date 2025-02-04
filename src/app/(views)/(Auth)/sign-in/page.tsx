@@ -1,9 +1,11 @@
 "use client";
 import { BlackLogo } from "@/utility/images/ImgExport";
+import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { setCookie } from "cookies-next";
 
 interface FormData {
   email: string;
@@ -21,12 +23,41 @@ export default function SignIn() {
     mode: "onChange",
   });
   const router = useRouter();
+  const RouterPush2 = () => {
+    router.push("/sign-up");
+  };
   const RouterPush = () => {
     router.push("/");
   };
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:3001/auth/signin",
+        data
+      );
+      console.log(res);
+      if (res.status === 201) {
+        setCookie("auth_token", res.data.token, {
+          maxAge: 60 * 60,
+        });
+        setCookie("auth_name", res.data.fullName, {
+          maxAge: 60 * 60,
+        });
+        alert("You have Logged successfully!");
+
+        // setIsLoading(true);
+        setTimeout(() => {
+          // setIsLoading(false);
+          router.push("/");
+        }, 3000);
+      }
+    } catch (error: any) {
+      console.log(error);
+      if (error.response && error.response.status === 400) {
+        // setError("Password or Email Incorrect, Please try again.");
+      }
+    }
   };
 
   return (
@@ -82,7 +113,7 @@ export default function SignIn() {
         </h2>
         <p className="mt-[24px] font-normal text-[16px] leading-6 text-[#6C7275]">
           Don’t have an account yet?{" "}
-          <button onClick={RouterPush} className="text-[#38CB89]">
+          <button onClick={RouterPush2} className="text-[#38CB89]">
             Sign Up
           </button>
         </p>
@@ -115,8 +146,8 @@ export default function SignIn() {
             {...register("password", {
               required: "This is required",
               minLength: {
-                value: 6,
-                message: "Password must be at least 6 characters",
+                value: 8,
+                message: "Password must be at least 8 characters",
               },
             })}
           />
@@ -139,7 +170,8 @@ export default function SignIn() {
           className={`bg-black text-white py-2 px-4 rounded mt-4 ${
             !isValid ? "opacity-50 cursor-not-allowed" : ""
           }`}
-          disabled={!isValid} 
+          disabled={!isValid}
+          
         >
           Sign In
         </button>

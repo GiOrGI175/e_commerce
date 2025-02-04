@@ -1,10 +1,10 @@
-'use client';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import OrderSummary from './OrderSummary';
-import useCartStore from '../__atoms/CartStore';
-import Order from './Order';
-import { motion } from 'framer-motion';
+"use client";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import OrderSummary from "./OrderSummary";
+// import useCartStore from "../__atoms/CartStore";
+import Order from "./Order";
+import {motion} from "framer-motion"
 
 export default function Checkout() {
   const {
@@ -18,7 +18,7 @@ export default function Checkout() {
 
   const [selectedMethod, setSelectedMethod] = useState('creditCard');
   const [order, isOrder] = useState(false);
-  const cart = useCartStore((state) => state.cart);
+  // const cart = useCartStore((state) => state.cart);
 
   const onSubmit = (data: any) => {
     console.log('Payment Data:', data);
@@ -67,7 +67,7 @@ export default function Checkout() {
                         placeholder='Enter your first name'
                       />
                       {errors.firstName && (
-                        <p className='text-red-500 text-sm mt-1'>
+                        <p className="text-red-500 text-sm mt-1">
                           {/* {errors.firstName.message} */}
                         </p>
                       )}
@@ -91,7 +91,7 @@ export default function Checkout() {
                         placeholder='Enter your last name'
                       />
                       {errors.lastName && (
-                        <p className='text-red-500 text-sm mt-1'>
+                        <p className="text-red-500 text-sm mt-1">
                           {/* {errors.lastName.message} */}
                         </p>
                       )}
@@ -120,10 +120,10 @@ export default function Checkout() {
                       placeholder='Enter your phone number'
                     />
                     {errors.phoneNumber && (
-                      <p className='text-red-500 text-sm mt-1'>
+                      <p className="text-red-500 text-sm mt-1">
                         {/* {errors.phoneNumber.message} */}
                       </p>
-                    )}
+                    )} */
                   </div>
 
                   {/* Email */}
@@ -148,10 +148,10 @@ export default function Checkout() {
                       placeholder='Enter your email'
                     />
                     {errors.email && (
-                      <p className='text-red-500 text-sm mt-1'>
+                      <p className="text-red-500 text-sm mt-1">
                         {/* {errors.email.message} */}
                       </p>
-                    )}
+                    )} */
                   </div>
                 </div>
 
@@ -183,7 +183,7 @@ export default function Checkout() {
                           placeholder='Enter your card number'
                         />
                         {errors.cardNumber && (
-                          <p className='text-red-500 text-sm mt-1'>
+                          <p className="text-red-500 text-sm mt-1">
                             {/* {errors.cardNumber.message} */}
                           </p>
                         )}
@@ -211,7 +211,7 @@ export default function Checkout() {
                           placeholder='MM/YY'
                         />
                         {errors.expirationDate && (
-                          <p className='text-red-500 text-sm mt-1'>
+                          <p className="text-red-500 text-sm mt-1">
                             {/* {errors.expirationDate.message} */}
                           </p>
                         )}
@@ -239,7 +239,7 @@ export default function Checkout() {
                           placeholder='Enter your CVC'
                         />
                         {errors.cvc && (
-                          <p className='text-red-500 text-sm mt-1'>
+                          <p className="text-red-500 text-sm mt-1">
                             {/* {errors.cvc.message} */}
                           </p>
                         )}

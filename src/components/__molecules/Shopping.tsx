@@ -3,14 +3,14 @@ import { TableImage } from "@/utility/images/ImgExport";
 import Image from "next/image";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import useCartStore from "../__atoms/CartStore";
+// import useCartStore from "../__atoms/CartStore";
 import Checkout from "./Checkout";
 
 export default function Shopping() {
-  const cart = useCartStore((state) => state.cart);
-  const removeFromCart = useCartStore((state) => state.removeFromCart);
-  const increaseQuantity = useCartStore((state) => state.increaseQuantity);
-  const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
+  // const cart = useCartStore((state) => state.cart);
+  // const removeFromCart = useCartStore((state) => state.removeFromCart);
+  // const increaseQuantity = useCartStore((state) => state.increaseQuantity);
+  // const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
   const [checkOut, isCheckOut] = useState(false);
   const [shopping, isShopping] = useState(true);
 
@@ -19,9 +19,9 @@ export default function Shopping() {
     isShopping(false);
   };
 
-  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  // const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const express = 15;
-  const pickUp = (total / 100) * 21;
+  // const pickUp = (total / 100) * 21;
 
   return (
     <div>
@@ -49,7 +49,7 @@ export default function Shopping() {
                     <h5>Subtotal</h5>
                   </div>
                 </div>
-                {cart.map((item: any) => (
+                {/* {cart.map((item: any) => (
                   <div key={item.id} className="h-[144px] flex items-center">
                     <div className="max-w-[316px] w-full flex items-center">
                       <Image
@@ -80,7 +80,7 @@ export default function Shopping() {
                       <h5>${item.price * item.quantity}</h5>
                     </div>
                   </div>
-                ))}
+                ))} */}
               </div>
               <div className="sm:max-w-[413px] m-auto sm:ml-5 w-full p-[24px] border-[1px] border-black rounded-md">
                 <div className="sm:max-w-[365px] w-full">
@@ -130,23 +130,23 @@ export default function Shopping() {
                   </div>
                   <div className="flex justify-between mt-4 h-[52px] items-center border-b-[1px]">
                     <h5>Subtotal</h5>
-                    <h5>${total}</h5>
+                    {/* <h5>${total}</h5> */}
                   </div>
                   <div className="flex justify-between mt-4 h-[52px] items-center">
                     <h5>Total</h5>
-                    <h5>${total}</h5>
+                    {/* <h5>${total}</h5> */}
                   </div>
-                  <button
+                  {/* <button
                     className={`w-full bg-black text-white h-[52px] mt-[40px] rounded-lg ${
                       cart.length < 1
                         ? "bg-gray-400 cursor-not-allowed"
                         : "bg-black text-white"
                     }`}
                     onClick={handleCheckOut}
-                    disabled={cart.length < 1}
+                    // disabled={cart.length < 1}
                   >
                     Checkout
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
