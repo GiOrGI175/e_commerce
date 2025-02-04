@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
-import useCartStore from "../__atoms/CartStore";
+// import useCartStore from "../__atoms/CartStore";
 import Image from "next/image";
 import { TableImage } from "@/utility/images/ImgExport";
 import { motion } from "framer-motion";
 
 export default function Order() {
-  const cart = useCartStore((state) => state.cart);
+  // const cart = useCartStore((state) => state.cart);
   const date = new Date();
   const newDate =
     date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  const clearCart = useCartStore((state) => state.clearCart);
+  // const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  // const clearCart = useCartStore((state) => state.clearCart);
 
   // useEffect(() => {
   //   clearCart(); 
@@ -34,7 +34,7 @@ export default function Order() {
           Your order has been received
         </h1>
         <div className="flex mt-[40px]">
-          {cart.map((item) => (
+          {/* {cart.map((item) => (
             <Image
               src={TableImage}
               width={80}
@@ -42,7 +42,7 @@ export default function Order() {
               alt="image"
               className="m-auto"
             />
-          ))}
+          ))} */}
         </div>
         <div className="flex flex-col gap-5">
           <div className="flex justify-between mt-10">
@@ -55,7 +55,7 @@ export default function Order() {
           </div>
           <div className="flex justify-between">
             <h4>Total:</h4>
-            <h4>${total}</h4>
+            {/* <h4>${total}</h4> */}
           </div>
           <div className="flex justify-between">
             <h4>Payment method:</h4>

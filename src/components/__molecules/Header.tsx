@@ -21,16 +21,16 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
-import useCartStore from '../__atoms/CartStore';
+// import useCartStore from '../__atoms/CartStore';
 const Header = () => {
-  const cart = useCartStore((state: any) => state.cart);
+  // const cart = useCartStore((state: any) => state.cart);
   const [isOpen, setIsOpen] = useState(false);
   const PathName = usePathname();
   const router = useRouter();
-  const totalQuantity = cart.reduce(
-    (total: any, item: any) => total + (item.quantity || 1),
-    0
-  );
+  // const totalQuantity = cart.reduce(
+  //   (total: any, item: any) => total + (item.quantity || 1),
+  //   0
+  // );
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -217,7 +217,7 @@ const Header = () => {
           onClick={handleClickCart}
         />
         <div className='w-6 h-6 flex justify-center items-center text-white bg-black rounded-[12px] ml-[-25px]'>
-          {totalQuantity}
+          {/* {totalQuantity} */}
         </div>
       </div>
     </header>
