@@ -21,16 +21,13 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
-// import useCartStore from '../__atoms/CartStore';
+
 const Header = () => {
-  // const cart = useCartStore((state: any) => state.cart);
+  
   const [isOpen, setIsOpen] = useState(false);
   const PathName = usePathname();
   const router = useRouter();
-  // const totalQuantity = cart.reduce(
-  //   (total: any, item: any) => total + (item.quantity || 1),
-  //   0
-  // );
+  
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -45,7 +42,7 @@ const Header = () => {
 
   return (
     <header className='max-w-[1120px] w-full h-[60px] flex items-center justify-between'>
-      {/* Mobile Menu */}
+      
       <div className='sm:hidden flex items-center ml-[32px]'>
         <Image
           src={burgerMenu}

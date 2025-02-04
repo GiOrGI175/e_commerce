@@ -1,28 +1,88 @@
 "use client";
 import { TableImage } from "@/utility/images/ImgExport";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 // import useCartStore from "../__atoms/CartStore";
 import Checkout from "./Checkout";
+import axios from "axios";
+import { getCookies } from "cookies-next";
 
 export default function Shopping() {
-  // const cart = useCartStore((state) => state.cart);
-  // const removeFromCart = useCartStore((state) => state.removeFromCart);
-  // const increaseQuantity = useCartStore((state) => state.increaseQuantity);
-  // const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
   const [checkOut, isCheckOut] = useState(false);
   const [shopping, isShopping] = useState(true);
+  const [cart, setCart] = useState([]);
 
   const handleCheckOut = () => {
     isCheckOut(true);
     isShopping(false);
   };
 
-  // const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const express = 15;
-  // const pickUp = (total / 100) * 21;
 
+  const userId = getCookies().auth_name;
+
+  useEffect(() => {
+    const fetchOrderData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/auth/${userId}`
+        );
+
+        setCart(response.data.order);
+        console.log(response.data.order);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchOrderData();
+  }, [userId]);
+
+  const total = cart.reduce(
+    (acc, order:any) =>
+      acc +
+      order.products.reduce(
+        (productAcc:any, item:any) => productAcc + item.price * item.quantity,
+        0
+      ),
+    0
+  );
+  // const increaseQuantity = (orderId, productId) => {
+  //   setCart((prevCart:any) =>
+  //     prevCart.map((order) => {
+  //       if (order.id === orderId) {
+  //         return {
+  //           ...order,
+  //           products: order.products.map((item) =>
+  //             item.id === productId
+  //               ? { ...item, quantity: item.quantity + 1 }
+  //               : item
+  //           ),
+  //         };
+  //       }
+  //       return order;
+  //     })
+  //   );
+  // };
+  
+  // const decreaseQuantity = (orderId, productId) => {
+  //   setCart((prevCart:any) =>
+  //     prevCart.map((order) => {
+  //       if (order.id === orderId) {
+  //         return {
+  //           ...order,
+  //           products: order.products.map((item) =>
+  //             item.id === productId && item.quantity > 1
+  //               ? { ...item, quantity: item.quantity - 1 }
+  //               : item
+  //           ),
+  //         };
+  //       }
+  //       return order;
+  //     })
+  //   );
+  // };
   return (
     <div>
       {!checkOut && (
@@ -49,38 +109,45 @@ export default function Shopping() {
                     <h5>Subtotal</h5>
                   </div>
                 </div>
-                {/* {cart.map((item: any) => (
-                  <div key={item.id} className="h-[144px] flex items-center">
-                    <div className="max-w-[316px] w-full flex items-center">
-                      <Image
-                        src={TableImage}
-                        width={80}
-                        height={96}
-                        alt="table"
-                      />
-                      <div className="ml-4">
-                        <h5>{item.name}</h5>
-                        <h5>{item.color}</h5>
-                        <button onClick={() => removeFromCart(item.id)}>
+                {cart.map((order: any) => (
+                  <div>
+                    {order.products.map((item: any) => (
+                      <div
+                        key={item.id}
+                        className="h-[144px] flex items-center"
+                      >
+                        <div className="max-w-[316px] w-full flex items-center">
+                          <Image
+                            src={TableImage}
+                            width={80}
+                            height={96}
+                            alt="table"
+                          />
+                          <div className="ml-4">
+                            <h5>{item.name}</h5>
+                            <h5>{item.color}</h5>
+                            {/* <button onClick={() => removeFromCart(item.id)}>
                           Remove
-                        </button>
+                        </button> */}
+                          </div>
+                        </div>
+                        <div className="max-w-[322px] w-full h-[32px] flex justify-between">
+                          <div className="flex justify-around items-center border-[1px] border-black rounded-[4px] max-w-[80px] w-full">
+                            {/* <button onClick={() => decreaseQuantity(order.id, item.id)}>
+                              -
+                            </button> */}
+                            <h5>{item.quantity}</h5>
+                            {/* <button onClick={() => increaseQuantity(order.id,item.id)}>
+                              +
+                            </button> */}
+                          </div>
+                          <h5>${item.price}</h5>
+                          <h5>${item.price * item.quantity}</h5>
+                        </div>
                       </div>
-                    </div>
-                    <div className="max-w-[322px] w-full h-[32px] flex justify-between">
-                      <div className="flex justify-around items-center border-[1px] border-black rounded-[4px] max-w-[80px] w-full">
-                        <button onClick={() => decreaseQuantity(item.id)}>
-                          -
-                        </button>
-                        <h5>{item.quantity}</h5>
-                        <button onClick={() => increaseQuantity(item.id)}>
-                          +
-                        </button>
-                      </div>
-                      <h5>${item.price}</h5>
-                      <h5>${item.price * item.quantity}</h5>
-                    </div>
+                    ))}
                   </div>
-                ))} */}
+                ))}
               </div>
               <div className="sm:max-w-[413px] m-auto sm:ml-5 w-full p-[24px] border-[1px] border-black rounded-md">
                 <div className="sm:max-w-[365px] w-full">
@@ -130,23 +197,23 @@ export default function Shopping() {
                   </div>
                   <div className="flex justify-between mt-4 h-[52px] items-center border-b-[1px]">
                     <h5>Subtotal</h5>
-                    {/* <h5>${total}</h5> */}
+                    <h5>${total}</h5>
                   </div>
                   <div className="flex justify-between mt-4 h-[52px] items-center">
                     <h5>Total</h5>
-                    {/* <h5>${total}</h5> */}
+                    <h5>${total}</h5>
                   </div>
-                  {/* <button
+                  <button
                     className={`w-full bg-black text-white h-[52px] mt-[40px] rounded-lg ${
                       cart.length < 1
                         ? "bg-gray-400 cursor-not-allowed"
                         : "bg-black text-white"
                     }`}
                     onClick={handleCheckOut}
-                    // disabled={cart.length < 1}
+                    disabled={cart.length < 1}
                   >
                     Checkout
-                  </button> */}
+                  </button>
                 </div>
               </div>
             </div>
