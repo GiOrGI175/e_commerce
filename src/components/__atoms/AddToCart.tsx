@@ -6,10 +6,10 @@ import { getCookies } from 'cookies-next';
 import Image from 'next/image';
 
 type AddToCartSwipperProps = {
-  id: string;
+  productId?: string;
 };
 
-const AddToCart: React.FC<AddToCartSwipperProps> = ({ id }) => {
+const AddToCart: React.FC<AddToCartSwipperProps> = ({ productId }) => {
   const handleAddToCart = async () => {
     try {
       const token = getCookies().auth_token;
@@ -29,7 +29,9 @@ const AddToCart: React.FC<AddToCartSwipperProps> = ({ id }) => {
       console.log('Token:', token);
       console.log('User ID:', userId);
 
-      const response = await axios.get(`http://localhost:3001/products/${id}`);
+      const response = await axios.get(
+        `http://localhost:3001/products/${productId}`
+      );
       const product = response.data;
 
       console.log('Product details:', product);
