@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
 import { getCookies } from 'cookies-next';
+import Link from 'next/link';
 
 export default function ProductCard({
   onAddToCart,
@@ -115,12 +116,14 @@ export default function ProductCard({
         </div>
         {layout !== 'Sort3' && showAddToCart && (
           <div className='flex flex-col items-center justify-center'>
-            <button
-              className='absolute bottom-4 max-w-[200px] w-full bg-black text-white rounded-md py-[9px]'
-              onClick={handleAddToCart}
-            >
-              Add to cart
-            </button>
+            <Link href={`shop/${id}`}>
+              <button
+                className='absolute bottom-4 max-w-[200px] w-full bg-black text-white rounded-md py-[9px]'
+                onClick={handleAddToCart}
+              >
+                Add to cart
+              </button>
+            </Link>
           </div>
         )}
       </div>
