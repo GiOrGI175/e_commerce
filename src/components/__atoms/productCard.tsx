@@ -116,9 +116,12 @@ export default function ProductCard({
         </div>
         {layout !== 'Sort3' && showAddToCart && (
           <div className='flex flex-col items-center justify-center'>
-            <Link href={`shop/${id}`}>
+            <Link
+              href={`shop/${id}`}
+              className='absolute bottom-4 max-w-[200px] w-full'
+            >
               <button
-                className='absolute bottom-4 max-w-[200px] w-full bg-black text-white rounded-md py-[9px]'
+                className='  w-full bg-black text-white rounded-md py-[9px]'
                 onClick={handleAddToCart}
               >
                 Add to cart
