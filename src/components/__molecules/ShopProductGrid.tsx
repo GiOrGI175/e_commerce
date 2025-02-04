@@ -13,6 +13,25 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
   const [filteredProducts, setFilteredProducts] = useState<any>([]);
   const setMyObject = useObjectStore((state: any) => state.setMyObject);
   // const addToCart = useCartStore((state: any) => state.addToCart);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/products");
+        if (!response.ok) {
+          throw new Error("Failed to fetch products");
+        }
+        const data = await response.json();
+        setProducts(data);
+        console.log(data, "dataa");
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   // Function to update the visible products based on the current page and screen size
   const updateVisibleProducts = () => {
@@ -29,7 +48,7 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
     updateVisibleProducts();
     window.addEventListener("resize", updateVisibleProducts);
     return () => window.removeEventListener("resize", updateVisibleProducts);
-  }, [page]);
+  }, [page, products]);
 
   // Update filtered products when filters or visible products change
   useEffect(() => {
@@ -37,20 +56,20 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
 
     if (filters?.category && filters.category !== "All Rooms") {
       updatedProducts = updatedProducts.filter(
-        (product:any) => product.category === filters.category
+        (product: any) => product.category === filters.category
       );
     }
 
     if (filters?.priceRange) {
       const [min, max] = filters.priceRange.split("-").map(Number);
-      updatedProducts = updatedProducts.filter((product:any) => {
+      updatedProducts = updatedProducts.filter((product: any) => {
         const price = product.price;
         return max ? price >= min && price <= max : price >= min;
       });
     }
 
     setFilteredProducts(updatedProducts);
-  }, [filters, visibleProducts]);
+  }, [filters, visibleProducts, products]);
 
   return (
     <div
@@ -70,7 +89,7 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
               layout={layout}
               setLayout={setLayout}
               key={el.id}
-              ProductImage={ProductImage}
+              ProductImage={el.imageUrl}
               name={el.name}
               discount={el.discount}
               oldPrice={el.oldPrice}

@@ -65,37 +65,10 @@ export default function ProductCard({
             </div>
           </div>
         </div>
-        {showAddToCart && (
-          <div className="flex justify-center">
-            <button
-              onClick={() => {
-                onAddToCart({
-                  id,
-                  name,
-                  price,
-                });
-                setMyObject({
-                  id,
-                  name,
-                  price,
-                  oldPrice,
-                  discount,
-                  rating,
-                  isNew,
-                  image,
-                  description,
-                  images,
-                  stars,
-                  category,
-                  wishlist,
-                  quantity,
-                  SKU,
-                  chooseColor,
-                });
-              }}
-              className="absolute bottom-4 max-w-[200px] w-full bg-black text-white rounded-md py-[9px]"
-            >
-              <Link href={`shop/${id}`}>Add To Cart</Link>
+        {layout !== "Sort3" && showAddToCart && (
+          <div className="flex flex-col items-center justify-center">
+            <button className="absolute bottom-4 max-w-[200px] w-full bg-black text-white rounded-md py-[9px]">
+              <Link href={`shop/${id}`}>View Information</Link>
             </button>
           </div>
         )}
@@ -135,7 +108,7 @@ export default function ProductCard({
                 }
                 className="bg-black w-full  text-white rounded-md py-[9px]"
               >
-                Add To Cart
+                <Link href={`shop/${id}`}>View Information</Link>
               </button>
               <button className="py-[9px] font-bold">Wish List</button>
             </div>
