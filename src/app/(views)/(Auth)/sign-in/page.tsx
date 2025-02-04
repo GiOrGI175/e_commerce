@@ -36,12 +36,13 @@ export default function SignIn() {
         "http://localhost:3001/auth/signin",
         data
       );
-      console.log(res);
+      console.log(res.data.access_token);
+      
       if (res.status === 201) {
-        setCookie("auth_token", res.data.token, {
+        setCookie("auth_token", res.data.access_token, {
           maxAge: 60 * 60,
         });
-        setCookie("auth_name", res.data.fullName, {
+        setCookie("auth_name", res.data.userId, {
           maxAge: 60 * 60,
         });
         alert("You have Logged successfully!");

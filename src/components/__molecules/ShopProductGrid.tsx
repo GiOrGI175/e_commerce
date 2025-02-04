@@ -14,6 +14,7 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
   const setMyObject = useObjectStore((state: any) => state.setMyObject);
   // const addToCart = useCartStore((state: any) => state.addToCart);
   const [products, setProducts] = useState([]);
+  
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -70,6 +71,7 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
 
     setFilteredProducts(updatedProducts);
   }, [filters, visibleProducts, products]);
+  
 
   return (
     <div
@@ -85,7 +87,7 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
             <ProductCard
               // onAddToCart={() => addToCart(el)}
               setMyObject={setMyObject}
-              id={el.id}
+              id={el._id}
               layout={layout}
               setLayout={setLayout}
               key={el.id}
@@ -106,6 +108,7 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
               chooseColor={el.chooseColor}
               description={el.description}
             />
+            
           ))
         ) : (
           <p>No products found.</p>
