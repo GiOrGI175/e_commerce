@@ -25,65 +25,6 @@ export default function ProductCard({
     setShowAddToCart(false);
   };
 
-  const handleAddToCart = async () => {
-    try {
-      const token = getCookies().auth_token;
-      const userId = getCookies().auth_name;
-
-      if (!token) {
-        console.error('No JWT token found in cookies');
-        alert('Please sign-in to add product in cart !');
-        return;
-      }
-
-      if (!userId) {
-        console.error('No userId found in cookies');
-        return;
-      }
-
-      console.log('Token:', token);
-      console.log('User ID:', userId);
-
-      const response = await axios.get(`http://localhost:3001/products/${id}`);
-      const product = response.data;
-
-      console.log('Product details:', product);
-
-      const orderData = {
-        userId,
-        products: [
-          {
-            productId: product._id,
-            name: product.name,
-            price: product.price,
-            quantity: 1,
-            imageUrl: product.ProductImage,
-          },
-        ],
-      };
-
-      console.log(orderData);
-
-      const orderResponse = await axios.post(
-        'http://localhost:3001/orders',
-        orderData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      console.log('Order created:', orderResponse.data);
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error('Axios error:', error.response?.data || error.message);
-      } else {
-        console.error('Unexpected error:', error);
-      }
-    }
-  };
-
   return (
     <div
       onMouseEnter={handleMouseEnter}
@@ -120,10 +61,7 @@ export default function ProductCard({
               href={`shop/${id}`}
               className='absolute bottom-4 max-w-[200px] w-full'
             >
-              <button
-                className='  w-full bg-black text-white rounded-md py-[9px]'
-                onClick={handleAddToCart}
-              >
+              <button className='  w-full bg-black text-white rounded-md py-[9px]'>
                 Add to cart
               </button>
             </Link>

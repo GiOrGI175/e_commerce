@@ -116,7 +116,7 @@ const ProductDetails = () => {
             );
           })}
         </div>
-        <AddToCart />
+        <AddToCart id={productId} />
         <div className='py-[24px] mt-[32px] border-t-[1px] border-[#E8ECEF]'>
           <div className='flex'>
             <div className='w-[125px]'>
