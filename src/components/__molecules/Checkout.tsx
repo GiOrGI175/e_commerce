@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import OrderSummary from "./OrderSummary";
-import useCartStore from "../__atoms/CartStore";
+// import useCartStore from "../__atoms/CartStore";
 import Order from "./Order";
 import {motion} from "framer-motion"
 
@@ -18,7 +18,7 @@ export default function Checkout() {
 
   const [selectedMethod, setSelectedMethod] = useState("creditCard");
   const [order, isOrder] = useState(false);
-  const cart = useCartStore((state) => state.cart);
+  // const cart = useCartStore((state) => state.cart);
 
   const onSubmit = (data:any) => {
     console.log("Payment Data:", data);
@@ -64,7 +64,7 @@ export default function Checkout() {
                       />
                       {errors.firstName && (
                         <p className="text-red-500 text-sm mt-1">
-                          {errors.firstName.message}
+                          {/* {errors.firstName.message} */}
                         </p>
                       )}
                     </div>
@@ -88,7 +88,7 @@ export default function Checkout() {
                       />
                       {errors.lastName && (
                         <p className="text-red-500 text-sm mt-1">
-                          {errors.lastName.message}
+                          {/* {errors.lastName.message} */}
                         </p>
                       )}
                     </div>
@@ -117,9 +117,9 @@ export default function Checkout() {
                     />
                     {errors.phoneNumber && (
                       <p className="text-red-500 text-sm mt-1">
-                        {errors.phoneNumber.message}
+                        {/* {errors.phoneNumber.message} */}
                       </p>
-                    )} */}
+                    )} */
                   </div>
 
                   {/* Email */}
@@ -145,9 +145,9 @@ export default function Checkout() {
                     />
                     {errors.email && (
                       <p className="text-red-500 text-sm mt-1">
-                        {errors.email.message}
+                        {/* {errors.email.message} */}
                       </p>
-                    )} */}
+                    )} */
                   </div>
                 </div>
 
@@ -180,7 +180,7 @@ export default function Checkout() {
                         />
                         {errors.cardNumber && (
                           <p className="text-red-500 text-sm mt-1">
-                            {errors.cardNumber.message}
+                            {/* {errors.cardNumber.message} */}
                           </p>
                         )}
                       </div>
@@ -208,7 +208,7 @@ export default function Checkout() {
                         />
                         {errors.expirationDate && (
                           <p className="text-red-500 text-sm mt-1">
-                            {errors.expirationDate.message}
+                            {/* {errors.expirationDate.message} */}
                           </p>
                         )}
                       </div>
@@ -236,7 +236,7 @@ export default function Checkout() {
                         />
                         {errors.cvc && (
                           <p className="text-red-500 text-sm mt-1">
-                            {errors.cvc.message}
+                            {/* {errors.cvc.message} */}
                           </p>
                         )}
                       </div>

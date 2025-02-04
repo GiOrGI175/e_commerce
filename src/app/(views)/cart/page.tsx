@@ -1,5 +1,5 @@
 "use client";
-import useCartStore from "@/components/__atoms/CartStore";
+// import useCartStore from "@/components/__atoms/CartStore";
 import Checkout from "@/components/__molecules/Checkout";
 import Order from "@/components/__molecules/Order";
 import Shopping from "@/components/__molecules/Shopping";
@@ -12,7 +12,7 @@ export default function Cart() {
   const [checkOut, isCheckOut] = useState(false);
   const [shopping, isShopping] = useState(true);
   const [order, isOrder] = useState(false);
-  const cart = useCartStore((state) => state.cart);
+  // const cart = useCartStore((state) => state.cart);
   const handleCheckOut = () => {
     isCheckOut(true);
     console.log(checkOut);

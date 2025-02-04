@@ -3,7 +3,7 @@ import ProductCard from "../__atoms/productCard";
 import { products } from "@/commons/services/product";
 import { ProductImage } from "@/utility/images/ImgExport";
 import { cartList } from "@/commons/services/cartList";
-import useCartStore from "../__atoms/CartStore";
+// import useCartStore from "../__atoms/CartStore";
 import useSetObj from "../__atoms/SetObj";
 import useObjectStore from "../__atoms/SetObj";
 
@@ -12,7 +12,7 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
   const [page, setPage] = useState(0);
   const [filteredProducts, setFilteredProducts] = useState<any>([]);
   const setMyObject = useObjectStore((state: any) => state.setMyObject);
-  const addToCart = useCartStore((state: any) => state.addToCart);
+  // const addToCart = useCartStore((state: any) => state.addToCart);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export default function ShopProductGrid({ layout, filters, setLayout }: any) {
         {filteredProducts.length > 0 ? (
           filteredProducts.map((el: any) => (
             <ProductCard
-              onAddToCart={() => addToCart(el)}
+              // onAddToCart={() => addToCart(el)}
               setMyObject={setMyObject}
               id={el.id}
               layout={layout}
