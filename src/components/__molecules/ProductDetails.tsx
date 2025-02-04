@@ -18,7 +18,7 @@ type prodctT = {
 
 const ProductDetails = () => {
   const params = useParams();
-  const { productId } = params;
+  const { productId }: { productId?: string } = params;
 
   console.log(productId, 'id');
 
