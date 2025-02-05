@@ -1,13 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 // import OrderSummary from "./OrderSummary";
 // import useCartStore from "../__atoms/CartStore";
 import Order from "./Order";
 import { motion } from "framer-motion";
 import OrderSummary from "./OrderSummary";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function Checkout() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -19,13 +22,18 @@ export default function Checkout() {
 
   const [selectedMethod, setSelectedMethod] = useState("creditCard");
   const [order, isOrder] = useState(false);
-  const [cart,setCart] = useState([])
-  
+  const [cart, setCart] = useState([]);
 
   const onSubmit = (data: any) => {
     console.log("Payment Data:", data);
     isOrder(true); // Show Order component on successful submission
-    
+  };
+
+  const handleClick = () => {
+    setTimeout(() => {
+      axios.delete("http://localhost:3001/orders");
+      router.push("/");
+    }, 5000);
   };
 
   const paymentMethod = watch("paymentMethod", "creditCard");
@@ -69,11 +77,12 @@ export default function Checkout() {
                         className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Enter your first name"
                       />
-                      {errors.firstName && (
-                        <p className="text-red-500 text-sm mt-1">
-                          {/* {errors.firstName.message} */}
-                        </p>
-                      )}
+                      {errors.firstName &&
+                        typeof errors.firstName.message === "string" && (
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.firstName.message}
+                          </p>
+                        )}
                     </div>
 
                     {/* Last Name */}
@@ -93,11 +102,12 @@ export default function Checkout() {
                         className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Enter your last name"
                       />
-                      {errors.lastName && (
-                        <p className="text-red-500 text-sm mt-1">
-                          {/* {errors.lastName.message} */}
-                        </p>
-                      )}
+                      {errors.lastName &&
+                        typeof errors.lastName.message === "string" && (
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.lastName.message}
+                          </p>
+                        )}
                     </div>
                   </div>
 
@@ -115,19 +125,19 @@ export default function Checkout() {
                       {...register("phoneNumber", {
                         required: "Phone number is required",
                         pattern: {
-                          value: /^[0-9]{10}$/,
-                          message: "Enter a valid 10-digit phone number",
+                          value: /^[0-9]{9}$/,
+                          message: "Enter a valid 9-digit phone number",
                         },
                       })}
                       className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="Enter your phone number"
                     />
-                    {errors.phoneNumber && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {/* {errors.phoneNumber.message} */}
-                      </p>
-                    )}{" "}
-                    */
+                    {errors.phoneNumber &&
+                      typeof errors.phoneNumber.message === "string" && (
+                        <p className="text-red-500 text-sm mt-1">
+                          {errors.phoneNumber.message}
+                        </p>
+                      )}{" "}
                   </div>
 
                   {/* Email */}
@@ -151,12 +161,12 @@ export default function Checkout() {
                       className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="Enter your email"
                     />
-                    {errors.email && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {/* {errors.email.message} */}
-                      </p>
-                    )}{" "}
-                    */
+                    {errors.email &&
+                      typeof errors.email.message === "string" && (
+                        <p className="text-red-500 text-sm mt-1">
+                          {errors.email.message}
+                        </p>
+                      )}{" "}
                   </div>
                 </div>
 
@@ -187,11 +197,12 @@ export default function Checkout() {
                           className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="Enter your card number"
                         />
-                        {errors.cardNumber && (
-                          <p className="text-red-500 text-sm mt-1">
-                            {/* {errors.cardNumber.message} */}
-                          </p>
-                        )}
+                        {errors.cardNumber &&
+                          typeof errors.cardNumber.message === "string" && (
+                            <p className="text-red-500 text-sm mt-1">
+                              {errors.cardNumber.message}
+                            </p>
+                          )}
                       </div>
 
                       {/* Expiration Date */}
@@ -215,11 +226,12 @@ export default function Checkout() {
                           className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="MM/YY"
                         />
-                        {errors.expirationDate && (
-                          <p className="text-red-500 text-sm mt-1">
-                            {/* {errors.expirationDate.message} */}
-                          </p>
-                        )}
+                        {errors.expirationDate &&
+                          typeof errors.expirationDate.message === "string" && (
+                            <p className="text-red-500 text-sm mt-1">
+                              {errors.expirationDate.message}
+                            </p>
+                          )}
                       </div>
 
                       {/* CVC */}
@@ -243,11 +255,12 @@ export default function Checkout() {
                           className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="Enter your CVC"
                         />
-                        {errors.cvc && (
-                          <p className="text-red-500 text-sm mt-1">
-                            {/* {errors.cvc.message} */}
-                          </p>
-                        )}
+                        {errors.cvc &&
+                          typeof errors.cvc.message === "string" && (
+                            <p className="text-red-500 text-sm mt-1">
+                              {errors.cvc.message}
+                            </p>
+                          )}
                       </div>
                     </div>
                   )}
@@ -261,6 +274,7 @@ export default function Checkout() {
                         : "bg-gray-400 text-white cursor-not-allowed"
                     }`}
                     disabled={!isValid}
+                    onClick={handleClick}
                   >
                     Place Order
                   </button>

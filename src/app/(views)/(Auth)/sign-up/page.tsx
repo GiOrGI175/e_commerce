@@ -3,7 +3,7 @@ import { BlackLogo } from "@/utility/images/ImgExport";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 interface FormData {
@@ -14,7 +14,9 @@ interface FormData {
 }
 
 export default function Page() {
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  
   const RouterPush = () => {
     router.push("/sign-in");
   };
@@ -38,11 +40,11 @@ export default function Page() {
     } catch (error: any) {
       console.log(error);
       if (error.response && error.response.status === 400) {
-        // setErrorMessage("User Already Exists");
+        setError("User Already Exists");
       } else {
-        // setErrorMessage(
-        //   "An unexpected error occurred. Please try again later."
-        // );
+        setError(
+          "An unexpected error occurred. Please try again later."
+        );
       }
     }
   };
@@ -88,6 +90,7 @@ export default function Page() {
           />
         </div>
       </div>
+      
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -182,9 +185,9 @@ export default function Page() {
             </span>
           )}
         </div>
-
+        {error && <p className="text-red-500 mt-2">{error}</p>}
         <div className="flex items-center text-center">
-          <input type="checkbox" id="terms" />
+          <input type="checkbox" id="terms" required />
           <label htmlFor="terms" className="ml-2">
             I agree with Privacy Policy and Terms of Use
           </label>

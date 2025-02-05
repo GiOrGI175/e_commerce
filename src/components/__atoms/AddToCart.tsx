@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { heart } from '@/utility/images/ImgExport';
-import axios from 'axios';
-import { getCookies } from 'cookies-next';
-import Image from 'next/image';
+import { heart } from "@/utility/images/ImgExport";
+import axios from "axios";
+import { getCookies } from "cookies-next";
+import Image from "next/image";
 
 type AddToCartSwipperProps = {
   productId?: string;
@@ -16,25 +16,25 @@ const AddToCart: React.FC<AddToCartSwipperProps> = ({ productId }) => {
       const userId = getCookies().auth_name;
 
       if (!token) {
-        console.error('No JWT token found in cookies');
-        alert('Please sign-in to add product in cart !');
+        console.error("No JWT token found in cookies");
+        alert("Please sign-in to add product in cart !");
         return;
       }
 
       if (!userId) {
-        console.error('No userId found in cookies');
+        console.error("No userId found in cookies");
         return;
       }
 
-      console.log('Token:', token);
-      console.log('User ID:', userId);
+      console.log("Token:", token);
+      console.log("User ID:", userId);
 
       const response = await axios.get(
         `http://localhost:3001/products/${productId}`
       );
       const product = response.data;
 
-      console.log('Product details:', product);
+      console.log("Product details:", product);
 
       const orderData = {
         userId,
@@ -52,7 +52,7 @@ const AddToCart: React.FC<AddToCartSwipperProps> = ({ productId }) => {
       console.log(orderData);
 
       const orderResponse = await axios.post(
-        'http://localhost:3001/orders',
+        "http://localhost:3001/orders",
         orderData,
         {
           headers: {
@@ -61,40 +61,34 @@ const AddToCart: React.FC<AddToCartSwipperProps> = ({ productId }) => {
         }
       );
 
-      console.log('Order created:', orderResponse.data);
+      console.log("Order created:", orderResponse.data);
+      alert("Product Added in cart, Please Check !");
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.error('Axios error:', error.response?.data || error.message);
+        console.error("Axios error:", error.response?.data || error.message);
       } else {
-        console.error('Unexpected error:', error);
+        console.error("Unexpected error:", error);
       }
     }
   };
 
   return (
-    <div className='max-w-[508px] w-full flex-col mt-[56px] '>
-      <div className='w-full flex gap-[24px]'>
-        <div className='flex max-w-[127px] w-full h-[52px] rounded-[8px] bg-[#F5F5F5]'>
-          <button className='flex-1'>-</button>
-          <div className='flex justify-center items-center'>
-            <span className='flex-1 text-center'>1</span>
-          </div>
-          <button className='flex-1'>+</button>
-        </div>
-        <div className='max-w-[357px] w-full h-[52px] border-[1px] border-[#141718] rounded-[8px] flex justify-center items-center'>
-          <Image src={heart} width={24} height={24} alt='heart' />
+    <div className="max-w-[508px] w-full flex-col mt-[56px] ">
+      <div className="w-full flex gap-[24px]">
+        <div className="max-w-[357px] w-full h-[52px] border-[1px] border-[#141718] rounded-[8px] flex justify-center items-center">
+          <Image src={heart} width={24} height={24} alt="heart" />
           <div>
-            <span className='ml-[8px] mb-[16px] font-Inter font-normal text-[18px] leading-[32px]  text-[#141718] '>
+            <span className="ml-[8px] mb-[16px] font-Inter font-normal text-[18px] leading-[32px]  text-[#141718] ">
               Wishlist
             </span>
           </div>
         </div>
       </div>
       <button
-        className='mt-[16px] w-full h-[52px] rounded-[8px] bg-[#141718]'
+        className="mt-[16px] w-full h-[52px] rounded-[8px] bg-[#141718]"
         onClick={handleAddToCart}
       >
-        <span className='font-Inter font-medium text-[18px] leading-[32px]  text-white '>
+        <span className="font-Inter font-medium text-[18px] leading-[32px]  text-white ">
           Add to Cart
         </span>
       </button>

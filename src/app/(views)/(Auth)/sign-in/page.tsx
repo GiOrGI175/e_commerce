@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { setCookie } from "cookies-next";
-
+import { AxiosError } from "axios";
 interface FormData {
   email: string;
   password: string;
@@ -15,6 +15,7 @@ interface FormData {
 export default function SignIn() {
   const route = useRouter();
   const [user, setUser] = useState([]);
+  const [error, setError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -53,10 +54,13 @@ export default function SignIn() {
           router.push("/");
         }, 3000);
       }
-    } catch (error: any) {
+    } catch (error) {
       console.log(error);
-      if (error.response && error.response.status === 400) {
-        // setError("Password or Email Incorrect, Please try again.");
+      
+      if (error instanceof AxiosError && error.response?.status === 404) {
+        setError("User Not Registered");
+      } else {
+        setError("Something went wrong. Please try again.");
       }
     }
   };
@@ -158,6 +162,7 @@ export default function SignIn() {
             </span>
           )}
         </div>
+        {error && <p className="text-red-500 mt-2">{error}</p>}
 
         <div className="flex items-center text-center">
           <input type="checkbox" id="rememberMe" />

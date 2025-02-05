@@ -8,10 +8,6 @@ export const navLinks = [
     title: 'Shop',
   },
   {
-    link: '/product',
-    title: 'Product',
-  },
-  {
     link: '/contact-us',
     title: 'Contact Us',
   },
