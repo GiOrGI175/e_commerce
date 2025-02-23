@@ -16,7 +16,7 @@ interface FormData {
 export default function Page() {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  
+
   const RouterPush = () => {
     router.push("/sign-in");
   };
@@ -42,9 +42,7 @@ export default function Page() {
       if (error.response && error.response.status === 400) {
         setError("User Already Exists");
       } else {
-        setError(
-          "An unexpected error occurred. Please try again later."
-        );
+        setError("An unexpected error occurred. Please try again later.");
       }
     }
   };
@@ -90,7 +88,6 @@ export default function Page() {
           />
         </div>
       </div>
-      
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -99,10 +96,17 @@ export default function Page() {
         <h2 className="text-[#141718] text-[40px] leading-10 font-medium">
           Sign up
         </h2>
+
         <p className="mt-[24px] font-normal text-[16px] leading-6 text-[#6C7275]">
           Already have an account?{" "}
           <button onClick={RouterPush} className="text-[#38CB89]">
             Sign in
+          </button>
+        </p>
+        <p className="mt-[24px] font-normal text-[16px] leading-6 text-[#6C7275]">
+          Go back to 
+          <button onClick={() => router.push("/")} className="text-[#38CB89] ml-1">
+            Home
           </button>
         </p>
 
