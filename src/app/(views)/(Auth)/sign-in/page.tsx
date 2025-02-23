@@ -1,29 +1,68 @@
 "use client";
 import { BlackLogo } from "@/utility/images/ImgExport";
+import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-
+import { setCookie } from "cookies-next";
+import { AxiosError } from "axios";
 interface FormData {
   email: string;
   password: string;
 }
 
 export default function SignIn() {
-  const [user,setUser] = useState([])
+  const route = useRouter();
+  const [user, setUser] = useState([]);
+  const [error, setError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>();
+    formState: { errors, isValid },
+  } = useForm<FormData>({
+    mode: "onChange",
+  });
   const router = useRouter();
-  const RouterPush = () => {
+  const RouterPush2 = () => {
     router.push("/sign-up");
   };
+  const RouterPush = () => {
+    router.push("/");
+  };
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:3001/auth/signin",
+        data
+      );
+      console.log(res.data.access_token);
+      
+      if (res.status === 201) {
+        setCookie("auth_token", res.data.access_token, {
+          maxAge: 60 * 60,
+        });
+        setCookie("auth_name", res.data.userId, {
+          maxAge: 60 * 60,
+        });
+        alert("You have Logged successfully!");
+
+        // setIsLoading(true);
+        setTimeout(() => {
+          // setIsLoading(false);
+          router.push("/");
+        }, 3000);
+      }
+    } catch (error) {
+      console.log(error);
+      
+      if (error instanceof AxiosError && error.response?.status === 404) {
+        setError("User Not Registered");
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    }
   };
 
   return (
@@ -79,7 +118,7 @@ export default function SignIn() {
         </h2>
         <p className="mt-[24px] font-normal text-[16px] leading-6 text-[#6C7275]">
           Don’t have an account yet?{" "}
-          <button onClick={RouterPush} className="text-[#38CB89]">
+          <button onClick={RouterPush2} className="text-[#38CB89]">
             Sign Up
           </button>
         </p>
@@ -112,8 +151,8 @@ export default function SignIn() {
             {...register("password", {
               required: "This is required",
               minLength: {
-                value: 6,
-                message: "Password must be at least 6 characters",
+                value: 8,
+                message: "Password must be at least 8 characters",
               },
             })}
           />
@@ -123,6 +162,7 @@ export default function SignIn() {
             </span>
           )}
         </div>
+        {error && <p className="text-red-500 mt-2">{error}</p>}
 
         <div className="flex items-center text-center">
           <input type="checkbox" id="rememberMe" />
@@ -133,7 +173,11 @@ export default function SignIn() {
 
         <button
           type="submit"
-          className="bg-black text-white py-2 px-4 rounded mt-4"
+          className={`bg-black text-white py-2 px-4 rounded mt-4 ${
+            !isValid ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          disabled={!isValid}
+          
         >
           Sign In
         </button>
